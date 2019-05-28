@@ -1,0 +1,2 @@
+# AplicacionLavanderiaBeta
+Proyecto de prueba

@@ -40,6 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clientes\ClienteDto.cs" />
+    <Compile Include="Facturas\DetalleFacturaDto.cs" />
+    <Compile Include="Facturas\FacturasConDetalleDto.cs" />
+    <Compile Include="Facturas\FacturasDto.cs" />
+    <Compile Include="Facturas\GuardarFacturaDto.cs" />
+    <Compile Include="Facturas\ListadoDetallesFacturaDto.cs" />
+    <Compile Include="PrendasClasificacion\CostoDto.cs" />
+    <Compile Include="PrendasClasificacion\PrendaClasificacionDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solicitud\DetalleSolicitudDto.cs" />
     <Compile Include="Solicitud\EstadosSolicitudes.cs" />

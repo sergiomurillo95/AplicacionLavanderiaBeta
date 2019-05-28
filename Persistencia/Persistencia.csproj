@@ -48,7 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoBD\ClasificacionPrendasAccesoBD.cs" />
+    <Compile Include="AccesoBD\ClientesAccesoBD.cs" />
+    <Compile Include="AccesoBD\FacturaAccesoBD.cs" />
     <Compile Include="AccesoBD\IClasificacionPrendasAccesoBD.cs" />
+    <Compile Include="AccesoBD\IClientesAccesoBD.cs" />
+    <Compile Include="AccesoBD\IFacturaAccesoBD.cs" />
     <Compile Include="AccesoBD\ISolicitudesAccesoBD.cs" />
     <Compile Include="AccesoBD\SolicitudesAccesoBD.cs" />
     <Compile Include="Entidades\Clasificacion.cs" />

@@ -27,7 +27,6 @@ namespace Persistencia.AccesoBD
                 SuplementoEntrega = solicitud.SuplementoEntrega
             };
             var entry = _context.Solicitudes.Add(solicitudEntidad);
-            await _context.SaveChangesAsync();
 
             foreach (var detalleSolicitud in solicitud.DetallesSolicitud.DetalleSolicitud)
             {
@@ -42,8 +41,9 @@ namespace Persistencia.AccesoBD
                     PrendasClasificacionId = detalleSolicitud.PrendasClasificacionId
                 };
                 _context.DetalleSolicitud.Add(detalleSolicitudEntidad);
-                await _context.SaveChangesAsync();
             }
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task<SolicitudDto> ObtenerSolicitudPorId(int id)

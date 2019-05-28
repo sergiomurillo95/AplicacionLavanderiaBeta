@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C22FE170-EB53-4DEB-9A96-867B91C1AD6F}</ProjectGuid>
+    <ProjectGuid>{9616987B-1C85-4C45-8072-680B23F5D915}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Persistencia</RootNamespace>
-    <AssemblyName>Persistencia</AssemblyName>
+    <RootNamespace>Dtos</RootNamespace>
+    <AssemblyName>Dtos</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,31 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccesoBD\ClasificacionPrendasAccesoBD.cs" />
-    <Compile Include="AccesoBD\IClasificacionPrendasAccesoBD.cs" />
-    <Compile Include="AccesoBD\ISolicitudesAccesoBD.cs" />
-    <Compile Include="AccesoBD\SolicitudesAccesoBD.cs" />
-    <Compile Include="Entidades\Clasificacion.cs" />
-    <Compile Include="Entidades\Clientes.cs" />
-    <Compile Include="Entidades\Costo.cs" />
-    <Compile Include="Entidades\DetalleFactura.cs" />
-    <Compile Include="Entidades\DetalleSolicitud.cs" />
-    <Compile Include="Entidades\Factura.cs" />
-    <Compile Include="Entidades\Prendas.cs" />
-    <Compile Include="Entidades\PrendasClasificacion.cs" />
-    <Compile Include="Entidades\Solicitudes.cs" />
-    <Compile Include="LavanderiaDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dtos\Dtos.csproj">
-      <Project>{9616987b-1c85-4c45-8072-680b23f5d915}</Project>
-      <Name>Dtos</Name>
-    </ProjectReference>
+    <Compile Include="Solicitud\DetalleSolicitudDto.cs" />
+    <Compile Include="Solicitud\EstadosSolicitudes.cs" />
+    <Compile Include="Solicitud\GuardarSolicitudDto.cs" />
+    <Compile Include="Solicitud\ListadoDetallesSolicitudDto.cs" />
+    <Compile Include="Solicitud\SolicitudDto.cs" />
+    <Compile Include="Solicitud\SolicitudesConDetallesDto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

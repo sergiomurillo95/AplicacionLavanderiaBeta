@@ -46,7 +46,25 @@ namespace Persistencia.AccesoBD
             }
         }
 
-        public async Task<SolicitudesConDetallesDto> ObtenerSolicitudPorId(int id)
+        public async Task<SolicitudDto> ObtenerSolicitudPorId(int id)
+        {
+            var solicitud = (await EncontrarSolicitudes(t => t.Id == id)).FirstOrDefault();
+            if(solicitud != default(Solicitudes))
+            {
+                var solicitudDto = new SolicitudDto
+                {
+                     Id = solicitud.Id,
+                     ClienteId = solicitud.ClienteId,
+                     Estado = solicitud.Estado,
+                     Fecha = solicitud.Fecha,
+                     SuplementoEntrega = solicitud.SuplementoEntrega
+                };
+                return solicitudDto;
+            }
+            return default(SolicitudDto);
+        }
+
+        public async Task<SolicitudesConDetallesDto> ObtenerSolicitudConDetallePorId(int id)
         {
             var solicitud = (await EncontrarSolicitudes(t => t.Id == id)).FirstOrDefault();
             if(solicitud != default(Solicitudes))
@@ -88,7 +106,7 @@ namespace Persistencia.AccesoBD
             return default(SolicitudesConDetallesDto);
         }
 
-        public async Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudes()
+        public async Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudesConDetalle()
         {
             var listaSolicitudConDetalles = new List<SolicitudesConDetallesDto>();
             var solicitudes = _context.Solicitudes.ToList();
@@ -131,7 +149,7 @@ namespace Persistencia.AccesoBD
             return await Task.FromResult(listaSolicitudConDetalles);
         }
 
-        public async Task<List<SolicitudesConDetallesDto>> ConsultarSolicitudPorEstado(string estado)
+        public async Task<List<SolicitudesConDetallesDto>> ConsultarSolicitudConDetallePorEstado(string estado)
         {
             var solicitudes = (await EncontrarSolicitudes(t => t.Estado == estado)).ToList();
             var listaSolicitudConDetalles = new List<SolicitudesConDetallesDto>();

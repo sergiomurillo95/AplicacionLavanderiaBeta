@@ -33,13 +33,17 @@ namespace Persistencia.AccesoBD
         {
             var prenda = (await EncontrarPrenda(t => t.Id == prendaId)).FirstOrDefault();
             var clasificacion = (await EncontrarClasificacion(t => t.Id == clasificacionId)).FirstOrDefault();
-            var prendaClasificacionDto = new PrendaClasificacionDto
+            if(prenda != default(Prendas) && clasificacion != default(Clasificacion))
             {
-                Id = idPrendaClasificacion,
-                NombrePrenda = prenda.Nombre,
-                NombreClasificacion = clasificacion.Nombre
-            };
-            return prendaClasificacionDto;
+                var prendaClasificacionDto = new PrendaClasificacionDto
+                {
+                    Id = idPrendaClasificacion,
+                    NombrePrenda = prenda.Nombre,
+                    NombreClasificacion = clasificacion.Nombre
+                };
+                return prendaClasificacionDto;
+            }
+            return default(PrendaClasificacionDto);
         }
 
         public async Task<List<CostoDto>> ObtenerTodosCostos()

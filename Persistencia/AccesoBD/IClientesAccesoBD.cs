@@ -7,5 +7,6 @@ namespace Persistencia.AccesoBD
     public interface IClientesAccesoBD
     {
         Task<List<ClienteDto>> ObtenerTodosClientes();
+        Task<ClienteDto> ObtenerClientePorId(int id);
     }
 }

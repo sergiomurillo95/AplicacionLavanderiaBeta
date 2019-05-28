@@ -46,6 +46,48 @@ namespace Persistencia.AccesoBD
             }
         }
 
+        public async Task<SolicitudesConDetallesDto> ObtenerSolicitudPorId(int id)
+        {
+            var solicitud = (await EncontrarSolicitudes(t => t.Id == id)).FirstOrDefault();
+            if(solicitud != default(Solicitudes))
+            {
+                var listaDetallesDto = new List<DetalleSolicitudDto>();
+                var listaDetalles = (await EncontrarDetallesSolicitudes(t => t.SolicitudesId == solicitud.Id)).ToList();
+
+                foreach (var detalle in listaDetalles)
+                {
+                    var detalleDto = new DetalleSolicitudDto
+                    {
+                        Id = detalle.Id,
+                        Estado = detalle.Estado,
+                        Doblado = detalle.Doblado,
+                        LavadoPlanchado = detalle.LavadoPlanchado,
+                        LavadoSeco = detalle.LavadoSeco,
+                        Planchado = detalle.Planchado,
+                        PrendasClasificacionId = detalle.PrendasClasificacionId,
+                        SolicitudesId = detalle.SolicitudesId
+                    };
+                    listaDetallesDto.Add(detalleDto);
+                }
+
+                var listadoDetalles = new ListadoDetallesSolicitudDto
+                {
+                    DetalleSolicitud = listaDetallesDto
+                };
+                var solicitudConDetalle = new SolicitudesConDetallesDto
+                {
+                    ClienteId = solicitud.ClienteId,
+                    Estado = solicitud.Estado,
+                    Fecha = solicitud.Fecha,
+                    Id = solicitud.Id,
+                    SuplementoEntrega = solicitud.SuplementoEntrega,
+                    ListadoDetallesSolicitud = listadoDetalles
+                };
+                return solicitudConDetalle;
+            }
+            return default(SolicitudesConDetallesDto);
+        }
+
         public async Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudes()
         {
             var listaSolicitudConDetalles = new List<SolicitudesConDetallesDto>();
@@ -136,12 +178,15 @@ namespace Persistencia.AccesoBD
         public async Task ActualizarSolicitud(SolicitudDto solicitud)
         {
             var solicitudEntidad = _context.Solicitudes.First(a => a.Id == solicitud.Id);
-            solicitudEntidad.ClienteId = solicitud.ClienteId;
-            solicitudEntidad.Estado = solicitud.Estado;
-            solicitudEntidad.Fecha = solicitud.Fecha;
-            solicitudEntidad.SuplementoEntrega = solicitud.SuplementoEntrega;
+            if(solicitudEntidad != default(Solicitudes))
+            {
+                solicitudEntidad.ClienteId = solicitud.ClienteId;
+                solicitudEntidad.Estado = solicitud.Estado;
+                solicitudEntidad.Fecha = solicitud.Fecha;
+                solicitudEntidad.SuplementoEntrega = solicitud.SuplementoEntrega;
 
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
+            } 
         }
 
         public async Task EliminarSolicitud(int id)

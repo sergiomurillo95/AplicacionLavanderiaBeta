@@ -9,6 +9,7 @@
         public bool LavadoPlanchado { get; set; }
         public bool Planchado { get; set; }
         public bool Doblado { get; set; }
+        public int CantidadPrendas { get; set; }
         public string Estado { get; set; }
     }
 }

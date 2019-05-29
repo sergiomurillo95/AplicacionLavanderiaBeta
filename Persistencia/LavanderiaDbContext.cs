@@ -1,12 +1,13 @@
 ﻿using Persistencia.Entidades;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Persistencia
 {
     public class LavanderiaDbContext : DbContext
     {
-        public LavanderiaDbContext() : base("Server=myServerAddress;Database=myDataBase;Trusted_Connection=True;")
+        public LavanderiaDbContext() : base(@"Server=localhost\SQLEXPRESS;Database=ejemplo;Trusted_Connection=True;")
         {
         }
 
@@ -22,6 +23,8 @@ namespace Persistencia
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
             modelBuilder.Entity<Clasificacion>().HasKey(t => t.Id);
             modelBuilder.Entity<Clasificacion>().Property(t => t.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -57,6 +60,9 @@ namespace Persistencia
             modelBuilder.Entity<Solicitudes>().HasKey(t => t.Id);
             modelBuilder.Entity<Solicitudes>().Property(t => t.Id)
                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            //Se agregaron para solucionar problema de migracion
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
     }
 }

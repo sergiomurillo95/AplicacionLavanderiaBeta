@@ -5,7 +5,6 @@ namespace Persistencia.Entidades
     public class Factura
     {
         public int Id { get; set; }
-
         [ForeignKey("Solicitudes")]
         public int SolicitudesId { get; set; }
         public Solicitudes Solicitudes { get; set; }

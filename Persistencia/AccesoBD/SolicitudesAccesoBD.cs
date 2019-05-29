@@ -38,6 +38,7 @@ namespace Persistencia.AccesoBD
                     LavadoSeco = detalleSolicitud.LavadoSeco,
                     Planchado = detalleSolicitud.Planchado,
                     Estado = detalleSolicitud.Estado,
+                    CantidadPrendas = detalleSolicitud.CantidadPrendas,
                     PrendasClasificacionId = detalleSolicitud.PrendasClasificacionId
                 };
                 _context.DetalleSolicitud.Add(detalleSolicitudEntidad);
@@ -82,6 +83,7 @@ namespace Persistencia.AccesoBD
                         LavadoPlanchado = detalle.LavadoPlanchado,
                         LavadoSeco = detalle.LavadoSeco,
                         Planchado = detalle.Planchado,
+                        CantidadPrendas = detalle.CantidadPrendas,
                         PrendasClasificacionId = detalle.PrendasClasificacionId,
                         SolicitudesId = detalle.SolicitudesId
                     };
@@ -125,6 +127,7 @@ namespace Persistencia.AccesoBD
                         LavadoPlanchado = detalle.LavadoPlanchado,
                         LavadoSeco = detalle.LavadoSeco,
                         Planchado = detalle.Planchado,
+                        CantidadPrendas = detalle.CantidadPrendas,
                         PrendasClasificacionId = detalle.PrendasClasificacionId,
                         SolicitudesId = detalle.SolicitudesId
                     };
@@ -169,6 +172,7 @@ namespace Persistencia.AccesoBD
                         LavadoPlanchado = detalle.LavadoPlanchado,
                         LavadoSeco = detalle.LavadoSeco,
                         Planchado = detalle.Planchado,
+                        CantidadPrendas = detalle.CantidadPrendas,
                         PrendasClasificacionId = detalle.PrendasClasificacionId,
                         SolicitudesId = detalle.SolicitudesId
                     };

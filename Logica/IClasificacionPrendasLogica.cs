@@ -8,5 +8,6 @@ namespace Logica
     {
         Task<PrendasDto> ObtenerPrendaPorId(int id);
         Task<List<PrendaClasificacionDto>> ObtenerTodasPrendasConClasificacion();
+        Task<CostoDto> ObtenerCostoPorIdPrendaClasificacion(int idPrendaClasificacion);
     }
 }

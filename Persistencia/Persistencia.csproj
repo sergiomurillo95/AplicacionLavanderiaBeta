@@ -65,6 +65,11 @@
     <Compile Include="Entidades\PrendasClasificacion.cs" />
     <Compile Include="Entidades\Solicitudes.cs" />
     <Compile Include="LavanderiaDbContext.cs" />
+    <Compile Include="Migrations\201905291820270_Initial.cs" />
+    <Compile Include="Migrations\201905291820270_Initial.Designer.cs">
+      <DependentUpon>201905291820270_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +81,11 @@
       <Project>{9616987b-1c85-4c45-8072-680b23f5d915}</Project>
       <Name>Dtos</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905291820270_Initial.resx">
+      <DependentUpon>201905291820270_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

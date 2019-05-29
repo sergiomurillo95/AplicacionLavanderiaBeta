@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FacturasLogica.cs" />
+    <Compile Include="IFacturasLogica.cs" />
     <Compile Include="ISolicitudesLogica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolicitudesLogica.cs" />

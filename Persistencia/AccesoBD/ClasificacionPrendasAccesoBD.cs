@@ -46,6 +46,25 @@ namespace Persistencia.AccesoBD
             return default(PrendaClasificacionDto);
         }
 
+        public async Task<CostoDto> ObtenerCostoPorIdPrendaClasificacion(int idPrendaClasificacion)
+        {
+            var costo = (await EncontrarCosto(t => t.PrendasClasificacionId == idPrendaClasificacion)).FirstOrDefault();
+
+            var prendaClasificacion = (await EncontrarPrendasClasificacion(t => t.Id == costo.PrendasClasificacionId)).FirstOrDefault();
+            var prendaClasificacionDto = await ObtenerPrendaClasificacionDto(prendaClasificacion.Id, prendaClasificacion.PrendasId, prendaClasificacion.ClasificacionId);
+            var costoDto = new CostoDto
+            {
+                Id = costo.Id,
+                PrendaClasificacion = prendaClasificacionDto,
+                Doblado = costo.Doblado,
+                LavadoPlanchado = costo.LavadoPlanchado,
+                LavadoSeco = costo.LavadoSeco,
+                Planchado = costo.Planchado
+            };
+
+            return costoDto;
+        }
+
         public async Task<List<CostoDto>> ObtenerTodosCostos()
         {
             var listaCostoDto= new List<CostoDto>();
@@ -68,6 +87,21 @@ namespace Persistencia.AccesoBD
             return listaCostoDto;
         }
 
+        public async Task<PredasDto> ObtenerPrendaPorId(int id)
+        {
+            var prenda = (await EncontrarPrenda(t => t.Id == id)).FirstOrDefault();
+            if(prenda != default(Prendas))
+            {
+                var predaDto = new PredasDto
+                {
+                     Id = prenda.Id,
+                     Nombre = prenda.Nombre
+                };
+                return predaDto;
+            }
+            return default(PredasDto);
+        }
+
         public async Task<IQueryable<PrendasClasificacion>> EncontrarPrendasClasificacion(Expression<Func<PrendasClasificacion, bool>> expresion)
         {
             IQueryable<PrendasClasificacion> query = _context.Set<PrendasClasificacion>().Where(expresion);
@@ -77,6 +111,12 @@ namespace Persistencia.AccesoBD
         public async Task<IQueryable<Prendas>> EncontrarPrenda(Expression<Func<Prendas, bool>> expresion)
         {
             IQueryable<Prendas> query = _context.Set<Prendas>().Where(expresion);
+            return await Task.FromResult(query);
+        }
+
+        public async Task<IQueryable<Costo>> EncontrarCosto(Expression<Func<Costo, bool>> expresion)
+        {
+            IQueryable<Costo> query = _context.Set<Costo>().Where(expresion);
             return await Task.FromResult(query);
         }
 

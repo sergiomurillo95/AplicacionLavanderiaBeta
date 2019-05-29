@@ -2,8 +2,8 @@
 {
     public static class EstadosSolicitudes
     {
-        public static string SolicitudAtendida { get { return "Atendida"; } }
-        public static string SolicitudPendiente { get { return "Pendiente"; } }
-        public static string SolicitudFacturada { get { return "Facturada"; } }
+        public static string SolicitudAtendida { get { return "Solicitado"; } }
+        public static string SolicitudPendiente { get { return "En Proceso"; } }
+        public static string SolicitudFacturada { get { return "Finalizado"; } }
     }
 }

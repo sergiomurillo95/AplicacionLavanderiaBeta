@@ -49,7 +49,7 @@ namespace Logica
             {
                 foreach(var detalleSolicitud in solicitud.ListadoDetallesSolicitud.DetalleSolicitud)
                 {
-
+                    await _clasificacionPrendasAccesoBd.ObtenerCostoPorIdPrendaClasificacion(detalleSolicitud.PrendasClasificacionId);
                 }
             }
         }

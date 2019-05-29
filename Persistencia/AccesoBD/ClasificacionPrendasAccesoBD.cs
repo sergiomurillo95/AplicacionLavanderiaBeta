@@ -20,7 +20,7 @@ namespace Persistencia.AccesoBD
         public async Task<List<PrendaClasificacionDto>> ObtenerTodasPrendasConClasificacion()
         {
             var listaPrendasClasificacionDto = new List<PrendaClasificacionDto>();
-            var listaPrendasClasificacion = _context.PrendasClasificacion.ToList();
+            var listaPrendasClasificacion = _context.Set<PrendasClasificacion>().ToList();
             foreach(var prendaClasificacion in listaPrendasClasificacion)
             {
                 var prendaClasificacionDto = await ObtenerPrendaClasificacionDto(prendaClasificacion.Id, prendaClasificacion.PrendasId, prendaClasificacion.ClasificacionId);
@@ -68,7 +68,7 @@ namespace Persistencia.AccesoBD
         public async Task<List<CostoDto>> ObtenerTodosCostos()
         {
             var listaCostoDto= new List<CostoDto>();
-            var listaCosto = _context.Costo.ToList();
+            var listaCosto = _context.Set<Costo>().ToList();
             foreach (var costo in listaCosto)
             {
                 var prendaClasificacion = (await EncontrarPrendasClasificacion(t => t.Id == costo.PrendasClasificacionId)).FirstOrDefault();

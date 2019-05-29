@@ -26,7 +26,7 @@ namespace Persistencia.AccesoBD
                 Fecha = solicitud.Fecha,
                 SuplementoEntrega = solicitud.SuplementoEntrega
             };
-            var entry = _context.Solicitudes.Add(solicitudEntidad);
+            var entry = _context.Set<Solicitudes>().Add(solicitudEntidad);
 
             foreach (var detalleSolicitud in solicitud.DetallesSolicitud.DetalleSolicitud)
             {
@@ -41,7 +41,7 @@ namespace Persistencia.AccesoBD
                     CantidadPrendas = detalleSolicitud.CantidadPrendas,
                     PrendasClasificacionId = detalleSolicitud.PrendasClasificacionId
                 };
-                _context.DetalleSolicitud.Add(detalleSolicitudEntidad);
+                _context.Set<DetalleSolicitud>().Add(detalleSolicitudEntidad);
             }
 
             await _context.SaveChangesAsync();
@@ -111,7 +111,7 @@ namespace Persistencia.AccesoBD
         public async Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudesConDetalle()
         {
             var listaSolicitudConDetalles = new List<SolicitudesConDetallesDto>();
-            var solicitudes = _context.Solicitudes.ToList();
+            var solicitudes = _context.Set<Solicitudes>().ToList();
             foreach (var solicitud in solicitudes)
             {
                 var listaDetalles = (await EncontrarDetallesSolicitudes(t => t.SolicitudesId == solicitud.Id)).ToList();
@@ -199,7 +199,7 @@ namespace Persistencia.AccesoBD
 
         public async Task ActualizarSolicitud(SolicitudDto solicitud)
         {
-            var solicitudEntidad = _context.Solicitudes.First(a => a.Id == solicitud.Id);
+            var solicitudEntidad = _context.Set<Solicitudes>().First(a => a.Id == solicitud.Id);
             if(solicitudEntidad != default(Solicitudes))
             {
                 solicitudEntidad.ClienteId = solicitud.ClienteId;

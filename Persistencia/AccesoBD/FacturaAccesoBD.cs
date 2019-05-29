@@ -65,7 +65,7 @@ namespace Persistencia.AccesoBD
 
         public async Task<List<FacturasDto>> ObtenerTodasFacturas()
         {
-            var listaFacturas = _context.Factura.ToList();
+            var listaFacturas = _context.Set<Factura>().ToList();
             var listaFacturasDto = new List<FacturasDto>();
             foreach (var factura in listaFacturas)
             {
@@ -87,7 +87,7 @@ namespace Persistencia.AccesoBD
 
         public async Task<List<FacturasConDetalleDto>> ObtenerTodasFacturasConDetalle()
         {
-            var listaFacturas = _context.Factura.ToList();
+            var listaFacturas = _context.Set<Factura>().ToList();
             var listaFactuasConDetalle = new List<FacturasConDetalleDto>();
 
             foreach (var factura in listaFacturas)
@@ -169,7 +169,7 @@ namespace Persistencia.AccesoBD
                TotalParcial = factura.TotalParcial
             };
 
-            var entry = _context.Factura.Add(facturaEntidad);
+            var entry = _context.Set<Factura>().Add(facturaEntidad);
 
             foreach (var detalleFactura in factura.DetallesFacturas.DetallesFactura)
             {
@@ -184,14 +184,14 @@ namespace Persistencia.AccesoBD
                      Total = detalleFactura.Total
                 };
 
-                _context.DetalleFactura.Add(detalleFacturaEntidad);
+                _context.Set<DetalleFactura>().Add(detalleFacturaEntidad);
             }
             await _context.SaveChangesAsync();
         }
 
         public async Task ActualizarFactura(FacturasDto factura)
         {
-            var facturaEntidad = _context.Factura.First(a => a.Id == factura.Id);
+            var facturaEntidad = _context.Set<Factura>().First(a => a.Id == factura.Id);
             if (facturaEntidad != default(Factura))
             {
                 facturaEntidad.ClientesId = factura.ClientesId;

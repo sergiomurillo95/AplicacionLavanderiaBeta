@@ -23,8 +23,8 @@ namespace Lavanderia.Controllers
 
         public ActionResult About()
         {
-            var cliente = _clientesLogica.ObtenerClientePorId(1).Result;
-            ViewBag.Message = "Your application description page." + cliente.Nombres;
+            var cliente = _clientesLogica.ObtenerTodosClientes().Result;
+            ViewBag.Message = "Your application description page." + cliente.Count;
 
             return View();
         }

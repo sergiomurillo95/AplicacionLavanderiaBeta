@@ -20,8 +20,8 @@ namespace Persistencia.AccesoBD
         public async Task<List<ClienteDto>> ObtenerTodosClientes()
         {
             var listaClientes = new List<ClienteDto>();
-            var solicitudes = _context.Clientes.ToList();
-            foreach(var cliente in listaClientes)
+            var clientes = _context.Set<Clientes>().ToList();
+            foreach(var cliente in clientes)
             {
                 var clienteDto = new ClienteDto
                 {

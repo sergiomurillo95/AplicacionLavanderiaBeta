@@ -44,7 +44,7 @@ namespace Logica
                 {
                     var estadoAnt = solicitudDto.Estado;
                     var estadoNue = solicitud.Estado;
-                    if ((estadoAnt == EstadosSolicitudes.SolicitudFacturada && estadoNue == EstadosSolicitudes.SolicitudAtendida) || (estadoAnt == EstadosSolicitudes.SolicitudFacturada && estadoNue == EstadosSolicitudes.SolicitudPendiente) || (estadoAnt == EstadosSolicitudes.SolicitudAtendida && estadoNue == EstadosSolicitudes.SolicitudPendiente))
+                    if ((estadoAnt == EstadosSolicitudes.SolicitudFinalizada && estadoNue == EstadosSolicitudes.SolicitudEnProceso) || (estadoAnt == EstadosSolicitudes.SolicitudFinalizada && estadoNue == EstadosSolicitudes.SolicitudSolicitada))
                     {
                         return;
                     }

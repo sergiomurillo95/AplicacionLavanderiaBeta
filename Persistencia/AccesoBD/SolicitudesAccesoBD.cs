@@ -31,19 +31,22 @@ namespace Persistencia.AccesoBD
 
             foreach (var detalleSolicitud in solicitud.DetallesSolicitud.DetalleSolicitud)
             {
-                var detalleSolicitudEntidad = new DetalleSolicitud
+                if(detalleSolicitud.CantidadPrendas > 0)
                 {
-                    SolicitudesId = solicitudEntidad.Id,
-                    Doblado = detalleSolicitud.Doblado,
-                    LavadoPlanchado = detalleSolicitud.LavadoPlanchado,
-                    LavadoSeco = detalleSolicitud.LavadoSeco,
-                    Planchado = detalleSolicitud.Planchado,
-                    Estado = detalleSolicitud.Estado,
-                    CantidadPrendas = detalleSolicitud.CantidadPrendas,
-                    PrendasClasificacionId = detalleSolicitud.PrendasClasificacionId
-                };
-                _context.Set<DetalleSolicitud>().Add(detalleSolicitudEntidad);
-                await _context.SaveChangesAsync();
+                    var detalleSolicitudEntidad = new DetalleSolicitud
+                    {
+                        SolicitudesId = solicitudEntidad.Id,
+                        Doblado = detalleSolicitud.Doblado,
+                        LavadoPlanchado = detalleSolicitud.LavadoPlanchado,
+                        LavadoSeco = detalleSolicitud.LavadoSeco,
+                        Planchado = detalleSolicitud.Planchado,
+                        Estado = detalleSolicitud.Estado,
+                        CantidadPrendas = detalleSolicitud.CantidadPrendas,
+                        PrendasClasificacionId = detalleSolicitud.PrendasClasificacionId
+                    };
+                    _context.Set<DetalleSolicitud>().Add(detalleSolicitudEntidad);
+                    await _context.SaveChangesAsync();
+                } 
             }
         }
 

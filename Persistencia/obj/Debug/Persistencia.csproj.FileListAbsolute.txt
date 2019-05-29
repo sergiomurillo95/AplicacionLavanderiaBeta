@@ -9,3 +9,7 @@ D:\Repositorios\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.csp
 D:\Repositorios\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.csproj.CoreCompileInputs.cache
 D:\Repositorios\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.dll
 D:\Repositorios\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.pdb
+D:\Repositorios\AplicacionLavanderiaBeta\Persistencia\bin\Debug\Dtos.dll
+D:\Repositorios\AplicacionLavanderiaBeta\Persistencia\bin\Debug\Dtos.pdb
+D:\Repositorios\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.Migrations.Initial.resources
+D:\Repositorios\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.csproj.GenerateResource.Cache

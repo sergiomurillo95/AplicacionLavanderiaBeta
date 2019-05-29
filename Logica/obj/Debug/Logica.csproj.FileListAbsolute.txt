@@ -1,0 +1,13 @@
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\Logica.dll
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\Logica.pdb
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\Dtos.dll
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\Persistencia.dll
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\EntityFramework.dll
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\Dtos.pdb
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\Persistencia.pdb
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\Persistencia.dll.config
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\EntityFramework.xml
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.dll
+D:\Repositorios\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.pdb

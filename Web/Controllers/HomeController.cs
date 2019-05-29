@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,13 @@ namespace Lavanderia.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IClientesLogica _clientesLogica;
+
+        public HomeController(IClientesLogica clientesLogica)
+        {
+            _clientesLogica = clientesLogica;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -15,7 +23,8 @@ namespace Lavanderia.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            var cliente = _clientesLogica.ObtenerClientePorId(1).Result;
+            ViewBag.Message = "Your application description page." + cliente.Nombres;
 
             return View();
         }

@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClasificacionPrendasLogica.cs" />
+    <Compile Include="ClientesLogica.cs" />
     <Compile Include="FacturasLogica.cs" />
+    <Compile Include="IClasificacionPrendasLogica.cs" />
+    <Compile Include="IClientesLogica.cs" />
     <Compile Include="IFacturasLogica.cs" />
     <Compile Include="ISolicitudesLogica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

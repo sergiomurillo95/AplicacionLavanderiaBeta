@@ -13,7 +13,7 @@ namespace Persistencia.AccesoBD
         Task<List<PrendaClasificacionDto>> ObtenerTodasPrendasConClasificacion();
         Task<CostoDto> ObtenerCostoPorIdPrendaClasificacion(int idPrendaClasificacion);
         Task<List<CostoDto>> ObtenerTodosCostos();
-        Task<PredasDto> ObtenerPrendaPorId(int id);
+        Task<PrendasDto> ObtenerPrendaPorId(int id);
         Task<IQueryable<Prendas>> EncontrarPrenda(Expression<Func<Prendas, bool>> expresion);
         Task<IQueryable<Clasificacion>> EncontrarClasificacion(Expression<Func<Clasificacion, bool>> expresion);
         Task<IQueryable<PrendasClasificacion>> EncontrarPrendasClasificacion(Expression<Func<PrendasClasificacion, bool>> expresion);

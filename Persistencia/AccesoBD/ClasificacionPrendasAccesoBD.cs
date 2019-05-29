@@ -87,19 +87,19 @@ namespace Persistencia.AccesoBD
             return listaCostoDto;
         }
 
-        public async Task<PredasDto> ObtenerPrendaPorId(int id)
+        public async Task<PrendasDto> ObtenerPrendaPorId(int id)
         {
             var prenda = (await EncontrarPrenda(t => t.Id == id)).FirstOrDefault();
             if(prenda != default(Prendas))
             {
-                var predaDto = new PredasDto
+                var predaDto = new PrendasDto
                 {
                      Id = prenda.Id,
                      Nombre = prenda.Nombre
                 };
                 return predaDto;
             }
-            return default(PredasDto);
+            return default(PrendasDto);
         }
 
         public async Task<IQueryable<PrendasClasificacion>> EncontrarPrendasClasificacion(Expression<Func<PrendasClasificacion, bool>> expresion)

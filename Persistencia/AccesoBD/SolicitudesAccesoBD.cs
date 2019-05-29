@@ -17,7 +17,7 @@ namespace Persistencia.AccesoBD
             _context = context;
         }
 
-        public async Task GuardarSolicitud(GuardarSolicitudDto solicitud)
+        public async Task GuardarSolicitudConDetalles(GuardarSolicitudDto solicitud)
         {
             var solicitudEntidad = new Solicitudes
             {

@@ -169,7 +169,8 @@ namespace Persistencia.AccesoBD
                TotalParcial = factura.TotalParcial
             };
 
-            var entry = _context.Set<Factura>().Add(facturaEntidad);
+            _context.Set<Factura>().Add(facturaEntidad);
+            await _context.SaveChangesAsync();
 
             foreach (var detalleFactura in factura.DetallesFacturas.DetallesFactura)
             {
@@ -177,7 +178,7 @@ namespace Persistencia.AccesoBD
                 {
                      DetalleSolicitudId = detalleFactura.DetalleSolicitudId,
                      Doblado = detalleFactura.Doblado,
-                     FacturaId = entry.Id,
+                     FacturaId = facturaEntidad.Id,
                      LavadoPlanchado = detalleFactura.LavadoPlanchado,
                      LavadoSeco = detalleFactura.LavadoSeco,
                      Planchado = detalleFactura.Planchado,
@@ -185,8 +186,9 @@ namespace Persistencia.AccesoBD
                 };
 
                 _context.Set<DetalleFactura>().Add(detalleFacturaEntidad);
+                await _context.SaveChangesAsync();
             }
-            await _context.SaveChangesAsync();
+            
         }
 
         public async Task ActualizarFactura(FacturasDto factura)

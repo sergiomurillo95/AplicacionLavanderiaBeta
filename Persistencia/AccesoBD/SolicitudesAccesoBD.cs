@@ -26,13 +26,14 @@ namespace Persistencia.AccesoBD
                 Fecha = solicitud.Fecha,
                 SuplementoEntrega = solicitud.SuplementoEntrega
             };
-            var entry = _context.Set<Solicitudes>().Add(solicitudEntidad);
+             _context.Set<Solicitudes>().Add(solicitudEntidad);
+            await _context.SaveChangesAsync();
 
             foreach (var detalleSolicitud in solicitud.DetallesSolicitud.DetalleSolicitud)
             {
                 var detalleSolicitudEntidad = new DetalleSolicitud
                 {
-                    SolicitudesId = entry.Id,
+                    SolicitudesId = solicitudEntidad.Id,
                     Doblado = detalleSolicitud.Doblado,
                     LavadoPlanchado = detalleSolicitud.LavadoPlanchado,
                     LavadoSeco = detalleSolicitud.LavadoSeco,
@@ -42,9 +43,8 @@ namespace Persistencia.AccesoBD
                     PrendasClasificacionId = detalleSolicitud.PrendasClasificacionId
                 };
                 _context.Set<DetalleSolicitud>().Add(detalleSolicitudEntidad);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
         }
 
         public async Task<SolicitudDto> ObtenerSolicitudPorId(int id)

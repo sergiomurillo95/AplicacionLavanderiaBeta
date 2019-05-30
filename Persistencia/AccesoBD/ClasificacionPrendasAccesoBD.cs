@@ -125,7 +125,7 @@ namespace Persistencia.AccesoBD
             var prendas = (await EncontrarPrendasClasificacion(t => t.ClasificacionId == clasificacionId)).ToList();
             foreach(var prenda in prendas)
             {
-                var prendaEntidad = (await EncontrarPrenda(t => t.Id == prenda.Id)).FirstOrDefault();
+                var prendaEntidad = (await EncontrarPrenda(t => t.Id == prenda.PrendasId)).FirstOrDefault();
                 var prendaDto = new PrendasDto
                 {
                     Id = prendaEntidad.Id,

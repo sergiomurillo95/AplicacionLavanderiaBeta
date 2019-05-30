@@ -17,7 +17,7 @@
 
         <dd>
             Habitación
-            @*@Html.DisplayFor(model => model.Nombres)*@
+            @Html.DisplayFor(model => model.Nombres)
         </dd>
 
         <dt>
@@ -26,7 +26,7 @@
 
         <dd>
             Habitación
-            @*@Html.DisplayFor(model => model.Habitacion)*@
+            @Html.DisplayFor(model => model.Habitacion)
         </dd>
 
         <dt>
@@ -93,10 +93,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.SolicitudesId)
+                @Html.DisplayFor(modelItem => item.Prenda)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PrendasClasificacionId)
+                @Html.DisplayFor(modelItem => item.Clasificacion)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LavadoSeco)

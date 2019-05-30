@@ -102,7 +102,7 @@ namespace Lavanderia.Controllers
         [HttpPost]
         public JsonResult ConsultarPrendas(int? id)
         {
-            var prendas = _clasificacionPrendasLogica.ObtenerTodasPrendas().Result;
+            var prendas = _clasificacionPrendasLogica.ObtenerPrendasPorClasificacionId(id.Value).Result;
             return new JsonResult { Data = prendas, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 

@@ -29,3 +29,5 @@ C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Persistencia\ob
 C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.pdb
 C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.Migrations.Inicial.resources
 C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.csproj.GenerateResource.cache
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.Migrations.Modificacionenlosmodelos.resources
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Persistencia\obj\Debug\Persistencia.Migrations.Seeliminalastablasquesecrearon.resources

@@ -21,11 +21,9 @@ namespace Lavanderia.Controllers
         // GET: Lavanderia
         public ActionResult Index()
         {
+            var cliente = _solicitudLogica.ObtenerTodasSolicitudes().Result;
             
-
-           // return View(data.ToList());
-
-            return View();
+            return View(cliente);
         }
     }
 }

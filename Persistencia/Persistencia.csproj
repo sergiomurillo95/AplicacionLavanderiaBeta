@@ -69,6 +69,14 @@
     <Compile Include="Migrations\201905300345257_Inicial.Designer.cs">
       <DependentUpon>201905300345257_Inicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905300452223_Modificacion en los modelos.cs" />
+    <Compile Include="Migrations\201905300452223_Modificacion en los modelos.Designer.cs">
+      <DependentUpon>201905300452223_Modificacion en los modelos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905300455245_Se elimina las tablas que se crearon .cs" />
+    <Compile Include="Migrations\201905300455245_Se elimina las tablas que se crearon .Designer.cs">
+      <DependentUpon>201905300455245_Se elimina las tablas que se crearon .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -85,6 +93,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905300345257_Inicial.resx">
       <DependentUpon>201905300345257_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905300452223_Modificacion en los modelos.resx">
+      <DependentUpon>201905300452223_Modificacion en los modelos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905300455245_Se elimina las tablas que se crearon .resx">
+      <DependentUpon>201905300455245_Se elimina las tablas que se crearon .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

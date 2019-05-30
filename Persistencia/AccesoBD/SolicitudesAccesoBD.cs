@@ -50,20 +50,22 @@ namespace Persistencia.AccesoBD
             }
         }
 
-        public async Task<List<SolicitudDto>> ObtenerTodasSolicitudes()
+        public async Task<List<SolicitudConClienteDto>> ObtenerTodasSolicitudes()
         {
-            var listaSolicitudesDto = new List<SolicitudDto>();
+            var listaSolicitudesDto = new List<SolicitudConClienteDto>();
 
             var listaSolicitudes = _context.Set<Solicitudes>().ToList();
             foreach(var solicitud in listaSolicitudes)
             {
-                var solicitudDto = new SolicitudDto
+                var cliente = (await EncontrarCliente(t => t.Id == solicitud.ClienteId)).FirstOrDefault();
+                var solicitudDto = new SolicitudConClienteDto
                 {
-                     ClienteId = solicitud.ClienteId,
                      Estado = solicitud.Estado,
                      Fecha = solicitud.Fecha,
                      Id = solicitud.Id,
-                     SuplementoEntrega = solicitud.SuplementoEntrega
+                     SuplementoEntrega = solicitud.SuplementoEntrega,
+                     Nombres = cliente.Nombres,
+                     Habitacion = cliente.Habitacion
                 };
                 listaSolicitudesDto.Add(solicitudDto);
             }
@@ -249,6 +251,12 @@ namespace Persistencia.AccesoBD
         public async Task<IQueryable<DetalleSolicitud>> EncontrarDetallesSolicitudes(Expression<Func<DetalleSolicitud, bool>> expresion)
         {
             IQueryable<DetalleSolicitud> query = _context.Set<DetalleSolicitud>().Where(expresion);
+            return await Task.FromResult(query);
+        }
+
+        public async Task<IQueryable<Clientes>> EncontrarCliente(Expression<Func<Clientes, bool>> expresion)
+        {
+            IQueryable<Clientes> query = _context.Set<Clientes>().Where(expresion);
             return await Task.FromResult(query);
         }
     }

@@ -7,7 +7,7 @@ namespace Persistencia
 {
     public class LavanderiaDbContext : DbContext
     {
-        public LavanderiaDbContext() : base(@"Server=localhost\SQLEXPRESS;Database=ejemplo;Trusted_Connection=True;")
+        public LavanderiaDbContext() : base(@"Server=localhost\SQLEXPRESS02;Database=master;Trusted_Connection=True;")
         {
         }
 
@@ -64,5 +64,7 @@ namespace Persistencia
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
+
+        public System.Data.Entity.DbSet<Dtos.Solicitud.SolicitudDto> SolicitudDtoes { get; set; }
     }
 }

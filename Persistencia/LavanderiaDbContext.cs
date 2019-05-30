@@ -65,6 +65,6 @@ namespace Persistencia
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
-        public System.Data.Entity.DbSet<Dtos.Solicitud.GuardarSolicitudDto> GuardarSolicitudDtoes { get; set; }
+      
     }
 }

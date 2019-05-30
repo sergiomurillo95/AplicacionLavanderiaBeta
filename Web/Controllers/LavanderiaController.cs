@@ -48,26 +48,46 @@ namespace Lavanderia.Controllers
             return Json(cliente);
 
         }
-        /*
-                [HttpPost]
-                [ValidateAntiForgeryToken]
-                public ActionResult Crear([Bind(Include = "ClientesId, Nombres, Identificacion, Habitacion, SuplementoEntrega")] CrearSolicitudes crear)
-                {
-                    if (ModelState.IsValid)
-                    {
-
-                        var solicitud = new Solicitudes();
-                        solicitud.Fecha = DateTime.Now;
-                        solicitud.Estado = "Solicitado";
-                        solicitud.ClientesId = crear.ClientesId;
-
-                        db.SaveChanges();
-
-                        return RedirectToAction("Index");
         
-    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Crear([Bind(Include = "ClientesId, Nombres, Identificacion, Habitacion, SuplementoEntrega")] GuardarSolicitudDto guardarSolicitudDto)
+        {
+            if (ModelState.IsValid)
+            {
+                _solicitudLogica.GuardarSolicitud(guardarSolicitudDto);
+                return RedirectToAction("Index");
+            }
 
             return View();
-        }*/
+        }
+
+        [HttpGet]
+        public ActionResult DetalleSolicitud(int? id)
+        {
+            ViewBag.SolicitudId = id;
+
+            //Aquí consultas los clientes
+            
+            
+            var clasificacion = _clientesLogica.ObtenerTodosClientes().Result;
+            var listaclasificacion = new SelectList(clasificacion, "ID", "Nombres", 0);
+            ViewData["clasificacion"] = listaclasificacion;
+
+            
+            var prendas = _clientesLogica.ObtenerTodosClientes().Result;
+            var listaprendas = new SelectList(prendas, "ID", "Nombres", 0);
+            ViewData["prendas"] = listaprendas;
+
+            return View();
+
+        }
+
+        public ActionResult ListarDetalleSolicitudes(int? id)
+        {
+            var solicitudes = _solicitudLogica.ObtenerSolicitudConDetallePorId(id.Value).Result;
+
+            return View(solicitudes);
+        }
     }
 }

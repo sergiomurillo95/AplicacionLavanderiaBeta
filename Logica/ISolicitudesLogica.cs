@@ -8,7 +8,8 @@ namespace Logica
     {
         Task GuardarSolicitud(GuardarSolicitudDto solicitud);
         Task CambiarEstadoSolicitud(SolicitudDto solicitud);
-        Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudes();
+        Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudesConDetalle();
+        Task<List<SolicitudDto>> ObtenerTodasSolicitudes();
         Task<SolicitudesConDetallesDto> ObtenerSolicitudConDetallePorId(int id);
         Task<List<SolicitudesConDetallesDto>> ConsultarSolicitudConDetallePorEstado(string estado);
         Task<SolicitudDto> ObtenerSolicitudPorId(int id);

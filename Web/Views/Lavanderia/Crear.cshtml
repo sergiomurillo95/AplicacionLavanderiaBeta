@@ -1,7 +1,7 @@
 ﻿@model Dtos.Solicitud.GuardarSolicitudDto
 
 @{
-    ViewBag.Title = "Crear";
+    ViewBag.Title = "Solicitud servicio lavanderia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>GuardarSolicitudDto</h4>
+        <h4>Crear solicitud</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -73,7 +73,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Listado de solicitudes", "Index")
 </div>
 
 @section Scripts {

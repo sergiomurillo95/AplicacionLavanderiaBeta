@@ -13,10 +13,13 @@ namespace Persistencia.AccesoBD
         Task GuardarSolicitud(GuardarSolicitudDto solicitud);
         Task GuardarDetalleSolicitud(GuardarDetalleSolicitudDto detalleSolicitud);
         Task GuardarSolicitudConDetalles(GuardarSolicitudConDetallesDto solicitud);
+
         Task<SolicitudesConDetallesDto> ObtenerSolicitudConDetallePorId(int id);
         Task<List<SolicitudConClienteDto>> ObtenerTodasSolicitudes();
         Task<SolicitudDto> ObtenerSolicitudPorId(int id);
         Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudesConDetalle();
+        Task<List<DetalleSolicitudDto>> ObtenerDetalleSolicitudPorId(int idSolicitud);
+
         Task<List<SolicitudesConDetallesDto>> ConsultarSolicitudConDetallePorEstado(string estado);
         Task ActualizarSolicitud(SolicitudDto solicitud);
         Task EliminarSolicitud(int id);

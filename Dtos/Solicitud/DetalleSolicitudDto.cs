@@ -5,6 +5,10 @@
         public int Id { get; set; }
         public int SolicitudesId { get; set; }
         public int PrendasClasificacionId { get; set; }
+
+        public string Prenda { get; set; }
+        public string Clasificacion { get; set; }
+
         public bool LavadoSeco { get; set; }
         public bool LavadoPlanchado { get; set; }
         public bool Planchado { get; set; }

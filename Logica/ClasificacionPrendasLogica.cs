@@ -38,5 +38,10 @@ namespace Logica
         {
             return await _clasificacionPrendasAccesoBd.ObtenerTodasClasificacion();
         }
+
+        public async Task<List<PrendasDto>> ObtenerPrendasPorClasificacionId(int clasificacionId)
+        {
+            return await _clasificacionPrendasAccesoBd.ObtenerPrendasPorClasificacionId(clasificacionId);
+        }
     }
 }

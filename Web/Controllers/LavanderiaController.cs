@@ -12,18 +12,53 @@ namespace Lavanderia.Controllers
     {
         
         private readonly ISolicitudesLogica _solicitudLogica;
+        private readonly IClientesLogica _clientesLogica;
 
-        public LavanderiaController(ISolicitudesLogica solicitudLogica)
+        public LavanderiaController(IClientesLogica clientesLogica,
+            ISolicitudesLogica solicitudLogica)
         {
-           
+            _clientesLogica = clientesLogica;
             _solicitudLogica = solicitudLogica;
         }
         // GET: Lavanderia
         public ActionResult Index()
         {
-            var cliente = _solicitudLogica.ObtenerTodasSolicitudes().Result;
+            var solicitudes = _solicitudLogica.ObtenerTodasSolicitudes().Result;
             
-            return View(cliente);
+            return View(solicitudes);
+        }
+
+        [HttpGet]
+        public ActionResult Crear()
+        {
+            //Aquí consultas los clientes
+            var cliente = _clientesLogica.ObtenerTodosClientes().Result;
+            var listaClientes = new SelectList(cliente, "ID", "Nombres", 0);
+            ViewData["Clientes"] = listaClientes;
+
+            return View();
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Crear([Bind(Include = "ClientesId, Nombres, Identificacion, Habitacion, SuplementoEntrega")] CrearSolicitudes crear)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var solicitud = new Solicitudes();
+                solicitud.Fecha = DateTime.Now;
+                solicitud.Estado = "Solicitado";
+                solicitud.ClientesId = crear.ClientesId;
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+
+            }
+
+            return View();
         }
     }
 }

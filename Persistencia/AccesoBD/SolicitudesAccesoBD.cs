@@ -11,13 +11,47 @@ namespace Persistencia.AccesoBD
     public class SolicitudesAccesoBD : ISolicitudesAccesoBD
     {
         private LavanderiaDbContext _context;
+        private readonly IClasificacionPrendasAccesoBD _clasificacionPrendasAccesoBd;
 
-        public SolicitudesAccesoBD(LavanderiaDbContext context)
+        public SolicitudesAccesoBD(LavanderiaDbContext context,
+            IClasificacionPrendasAccesoBD clasificacionPrendasAccesoBd)
         {
             _context = context;
+            _clasificacionPrendasAccesoBd = clasificacionPrendasAccesoBd;
         }
 
-        public async Task GuardarSolicitudConDetalles(GuardarSolicitudDto solicitud)
+        public async Task GuardarSolicitud(GuardarSolicitudDto solicitud)
+        {
+            var solicitudEntidad = new Solicitudes
+            {
+                ClienteId = solicitud.ClientesId,
+                Estado = "Pendiente",
+                Fecha = DateTime.Now,
+                SuplementoEntrega = solicitud.SuplementoEntrega
+            };
+            _context.Set<Solicitudes>().Add(solicitudEntidad);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task GuardarDetalleSolicitud(GuardarDetalleSolicitudDto detalleSolicitud)
+        {
+            var prendasClasificacion = (await _clasificacionPrendasAccesoBd.EncontrarPrendasClasificacion(t => t.ClasificacionId == detalleSolicitud.ClasificacionId && t.PrendasId == detalleSolicitud.PrendasId)).FirstOrDefault();
+            var detalleSolicitudEntidad = new DetalleSolicitud
+            {
+                SolicitudesId = detalleSolicitud.SolicitudesId,
+                Doblado = detalleSolicitud.Doblado,
+                LavadoPlanchado = detalleSolicitud.LavadoPlanchado,
+                LavadoSeco = detalleSolicitud.LavadoSeco,
+                Planchado = detalleSolicitud.Planchado,
+                Estado = detalleSolicitud.Estado,
+                CantidadPrendas = detalleSolicitud.CantidadPrendas,
+                PrendasClasificacionId = prendasClasificacion.Id
+            };
+            _context.Set<DetalleSolicitud>().Add(detalleSolicitudEntidad);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task GuardarSolicitudConDetalles(GuardarSolicitudConDetallesDto solicitud)
         {
             var solicitudEntidad = new Solicitudes
             {

@@ -46,7 +46,7 @@ namespace Lavanderia.Controllers
                  DetalleSolicitud = detallesSolicitudes
             };
 
-            var guardarSolicitud = new GuardarSolicitudDto
+            var guardarSolicitud = new GuardarSolicitudConDetallesDto
             {
                  ClienteId = 1,
                  Estado = "Pendiente",

@@ -52,6 +52,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solicitud\DetalleSolicitudDto.cs" />
     <Compile Include="Solicitud\EstadosSolicitudes.cs" />
+    <Compile Include="Solicitud\GuardarDetalleSolicitudDto.cs" />
+    <Compile Include="Solicitud\GuardarSolicitudConDetallesDto.cs" />
     <Compile Include="Solicitud\GuardarSolicitudDto.cs" />
     <Compile Include="Solicitud\ListadoDetallesSolicitudDto.cs" />
     <Compile Include="Solicitud\SolicitudConClienteDto.cs" />

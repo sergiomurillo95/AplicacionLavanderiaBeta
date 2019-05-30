@@ -13,12 +13,14 @@ namespace Lavanderia.Controllers
         
         private readonly ISolicitudesLogica _solicitudLogica;
         private readonly IClientesLogica _clientesLogica;
+        private readonly IClasificacionPrendasLogica _clasificacionPrendasLogica;
 
         public LavanderiaController(IClientesLogica clientesLogica,
-            ISolicitudesLogica solicitudLogica)
+            ISolicitudesLogica solicitudLogica, IClasificacionPrendasLogica clasificacionPrendasLogica)
         {
             _clientesLogica = clientesLogica;
             _solicitudLogica = solicitudLogica;
+            _clasificacionPrendasLogica = clasificacionPrendasLogica;
         }
         // GET: Lavanderia
         public ActionResult Index()
@@ -68,19 +70,24 @@ namespace Lavanderia.Controllers
             ViewBag.SolicitudId = id;
 
             //Aquí consultas los clientes
-            
-            
-            var clasificacion = _clientesLogica.ObtenerTodosClientes().Result;
-            var listaclasificacion = new SelectList(clasificacion, "ID", "Nombres", 0);
+            var clasificacion = _clasificacionPrendasLogica.ObtenerTodasClasificacion().Result;
+            var listaclasificacion = new SelectList(clasificacion, "ID", "Nombre", 0);
             ViewData["clasificacion"] = listaclasificacion;
 
             
-            var prendas = _clientesLogica.ObtenerTodosClientes().Result;
-            var listaprendas = new SelectList(prendas, "ID", "Nombres", 0);
+            var prendas = _clasificacionPrendasLogica.ObtenerTodasPrendas().Result;
+            var listaprendas = new SelectList(prendas, "ID", "Nombre", 0);
             ViewData["prendas"] = listaprendas;
 
             return View();
 
+        }
+
+        [HttpPost]
+        public JsonResult ConsultarPrendas(int? id)
+        {
+            var prendas = _clasificacionPrendasLogica.ObtenerTodasPrendas().Result;
+            return new JsonResult { Data = prendas, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         public ActionResult ListarDetalleSolicitudes(int? id)

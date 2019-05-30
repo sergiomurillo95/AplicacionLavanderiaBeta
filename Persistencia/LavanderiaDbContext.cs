@@ -65,6 +65,5 @@ namespace Persistencia
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
-      
     }
 }

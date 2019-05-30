@@ -92,5 +92,10 @@ namespace Logica
         {
             await _solicitudesAccesoBd.ActualizarSolicitud(solicitud);
         }
+
+        public async Task<List<DetalleSolicitudDto>> ObtenerDetalleSolicitudPorId(int idSolicitud)
+        {
+            return await _solicitudesAccesoBd.ObtenerDetalleSolicitudPorId(idSolicitud);
+        }
     }
 }

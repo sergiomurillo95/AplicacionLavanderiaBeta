@@ -12,12 +12,15 @@ namespace Persistencia.AccesoBD
     {
         private LavanderiaDbContext _context;
         private readonly IClasificacionPrendasAccesoBD _clasificacionPrendasAccesoBd;
+        private readonly IClientesAccesoBD _clienteAccesoBd;
 
         public SolicitudesAccesoBD(LavanderiaDbContext context,
-            IClasificacionPrendasAccesoBD clasificacionPrendasAccesoBd)
+            IClasificacionPrendasAccesoBD clasificacionPrendasAccesoBd,
+            IClientesAccesoBD clienteAccesoBd)
         {
             _context = context;
             _clasificacionPrendasAccesoBd = clasificacionPrendasAccesoBd;
+            _clienteAccesoBd = clienteAccesoBd;
         }
 
         public async Task GuardarSolicitud(GuardarSolicitudDto solicitud)
@@ -106,6 +109,29 @@ namespace Persistencia.AccesoBD
             return await Task.FromResult(listaSolicitudesDto);
         }
 
+        public async Task<List<DetalleSolicitudDto>> ObtenerDetalleSolicitudPorId(int idSolicitud)
+        {
+            var listaDetallesSolicitudesDto = new List<DetalleSolicitudDto>();
+            var detalleSolicitudes = (await EncontrarDetallesSolicitudes(t => t.SolicitudesId == idSolicitud)).ToList();
+            foreach(var detalle in detalleSolicitudes)
+            {
+                var detalleDto = new DetalleSolicitudDto
+                {
+                    Id = detalle.Id,
+                    Estado = detalle.Estado,
+                    Doblado = detalle.Doblado,
+                    LavadoPlanchado = detalle.LavadoPlanchado,
+                    LavadoSeco = detalle.LavadoSeco,
+                    Planchado = detalle.Planchado,
+                    CantidadPrendas = detalle.CantidadPrendas,
+                    PrendasClasificacionId = detalle.PrendasClasificacionId,
+                    SolicitudesId = detalle.SolicitudesId
+                };
+                listaDetallesSolicitudesDto.Add(detalleDto);
+            }
+            return listaDetallesSolicitudesDto;
+        }
+
         public async Task<SolicitudDto> ObtenerSolicitudPorId(int id)
         {
             var solicitud = (await EncontrarSolicitudes(t => t.Id == id)).FirstOrDefault();
@@ -134,6 +160,11 @@ namespace Persistencia.AccesoBD
 
                 foreach (var detalle in listaDetalles)
                 {
+                    var prendaClasificacion = (await _clasificacionPrendasAccesoBd.EncontrarPrendasClasificacion(t => t.Id == detalle.PrendasClasificacionId)).FirstOrDefault();
+
+                    var prenda = (await _clasificacionPrendasAccesoBd.EncontrarPrenda(t => t.Id == prendaClasificacion.PrendasId)).FirstOrDefault();
+                    var clasificacion = (await _clasificacionPrendasAccesoBd.EncontrarClasificacion(t => t.Id == prendaClasificacion.ClasificacionId)).FirstOrDefault();
+
                     var detalleDto = new DetalleSolicitudDto
                     {
                         Id = detalle.Id,
@@ -144,7 +175,9 @@ namespace Persistencia.AccesoBD
                         Planchado = detalle.Planchado,
                         CantidadPrendas = detalle.CantidadPrendas,
                         PrendasClasificacionId = detalle.PrendasClasificacionId,
-                        SolicitudesId = detalle.SolicitudesId
+                        SolicitudesId = detalle.SolicitudesId,
+                        Prenda = prenda.Nombre,
+                        Clasificacion = clasificacion.Nombre
                     };
                     listaDetallesDto.Add(detalleDto);
                 }
@@ -153,6 +186,7 @@ namespace Persistencia.AccesoBD
                 {
                     DetalleSolicitud = listaDetallesDto
                 };
+                var cliente = await _clienteAccesoBd.ObtenerClientePorId(solicitud.ClienteId);
                 var solicitudConDetalle = new SolicitudesConDetallesDto
                 {
                     ClienteId = solicitud.ClienteId,
@@ -160,7 +194,9 @@ namespace Persistencia.AccesoBD
                     Fecha = solicitud.Fecha,
                     Id = solicitud.Id,
                     SuplementoEntrega = solicitud.SuplementoEntrega,
-                    ListadoDetallesSolicitud = listadoDetalles
+                    ListadoDetallesSolicitud = listadoDetalles,
+                    Habitacion = cliente.Habitacion,
+                    Nombres = cliente.Nombres
                 };
                 return solicitudConDetalle;
             }
@@ -178,6 +214,11 @@ namespace Persistencia.AccesoBD
 
                 foreach (var detalle in listaDetalles)
                 {
+                    var prendaClasificacion = (await _clasificacionPrendasAccesoBd.EncontrarPrendasClasificacion(t => t.Id == detalle.PrendasClasificacionId)).FirstOrDefault();
+
+                    var prenda = (await _clasificacionPrendasAccesoBd.EncontrarPrenda(t => t.Id == prendaClasificacion.PrendasId)).FirstOrDefault();
+                    var clasificacion = (await _clasificacionPrendasAccesoBd.EncontrarClasificacion(t => t.Id == prendaClasificacion.ClasificacionId)).FirstOrDefault();
+
                     var detalleDto = new DetalleSolicitudDto
                     {
                         Id = detalle.Id,
@@ -188,7 +229,9 @@ namespace Persistencia.AccesoBD
                         Planchado = detalle.Planchado,
                         CantidadPrendas = detalle.CantidadPrendas,
                         PrendasClasificacionId = detalle.PrendasClasificacionId,
-                        SolicitudesId = detalle.SolicitudesId
+                        SolicitudesId = detalle.SolicitudesId,
+                        Clasificacion = clasificacion.Nombre,
+                        Prenda = prenda.Nombre
                     };
                     listaDetallesDto.Add(detalleDto);
                 }
@@ -197,6 +240,8 @@ namespace Persistencia.AccesoBD
                 {
                     DetalleSolicitud = listaDetallesDto
                 };
+                var cliente = await _clienteAccesoBd.ObtenerClientePorId(solicitud.ClienteId);
+
                 var solicitudConDetalle = new SolicitudesConDetallesDto
                 {
                     ClienteId = solicitud.ClienteId,
@@ -204,7 +249,9 @@ namespace Persistencia.AccesoBD
                     Fecha = solicitud.Fecha,
                     Id = solicitud.Id,
                     SuplementoEntrega = solicitud.SuplementoEntrega,
-                    ListadoDetallesSolicitud = listadoDetalles
+                    ListadoDetallesSolicitud = listadoDetalles,
+                    Habitacion = cliente.Habitacion,
+                    Nombres = cliente.Nombres
                 };
                 listaSolicitudConDetalles.Add(solicitudConDetalle);
             }
@@ -223,6 +270,11 @@ namespace Persistencia.AccesoBD
 
                 foreach (var detalle in listaDetalles)
                 {
+                    var prendaClasificacion = (await _clasificacionPrendasAccesoBd.EncontrarPrendasClasificacion(t => t.Id == detalle.PrendasClasificacionId)).FirstOrDefault();
+
+                    var prenda = (await _clasificacionPrendasAccesoBd.EncontrarPrenda(t => t.Id == prendaClasificacion.PrendasId)).FirstOrDefault();
+                    var clasificacion = (await _clasificacionPrendasAccesoBd.EncontrarClasificacion(t => t.Id == prendaClasificacion.ClasificacionId)).FirstOrDefault();
+
                     var detalleDto = new DetalleSolicitudDto
                     {
                         Id = detalle.Id,
@@ -233,7 +285,9 @@ namespace Persistencia.AccesoBD
                         Planchado = detalle.Planchado,
                         CantidadPrendas = detalle.CantidadPrendas,
                         PrendasClasificacionId = detalle.PrendasClasificacionId,
-                        SolicitudesId = detalle.SolicitudesId
+                        SolicitudesId = detalle.SolicitudesId,
+                        Clasificacion = clasificacion.Nombre,
+                        Prenda = prenda.Nombre
                     };
                     listaDetallesDto.Add(detalleDto);
                 }
@@ -242,6 +296,8 @@ namespace Persistencia.AccesoBD
                 {
                     DetalleSolicitud = listaDetallesDto
                 };
+                var cliente = await _clienteAccesoBd.ObtenerClientePorId(solicitud.ClienteId);
+
                 var solicitudConDetalle = new SolicitudesConDetallesDto
                 {
                     ClienteId = solicitud.ClienteId,
@@ -249,7 +305,9 @@ namespace Persistencia.AccesoBD
                     Fecha = solicitud.Fecha,
                     Id = solicitud.Id,
                     SuplementoEntrega = solicitud.SuplementoEntrega,
-                    ListadoDetallesSolicitud = listadoDetalles
+                    ListadoDetallesSolicitud = listadoDetalles,
+                    Habitacion = cliente.Habitacion,
+                    Nombres = cliente.Nombres
                 };
                 listaSolicitudConDetalles.Add(solicitudConDetalle);
             }

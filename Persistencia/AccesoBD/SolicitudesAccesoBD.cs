@@ -25,7 +25,7 @@ namespace Persistencia.AccesoBD
             var solicitudEntidad = new Solicitudes
             {
                 ClienteId = solicitud.ClientesId,
-                Estado = "Pendiente",
+                Estado = "Solicitado",
                 Fecha = DateTime.Now,
                 SuplementoEntrega = solicitud.SuplementoEntrega
             };

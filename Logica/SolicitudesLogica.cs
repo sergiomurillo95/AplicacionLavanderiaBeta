@@ -30,7 +30,7 @@ namespace Logica
         /// </summary>
         /// <param name="solicitud"></param>
         /// <returns></returns>
-        public async Task GuardarSolicitud(GuardarSolicitudConDetallesDto solicitud)
+        public async Task GuardarSolicitudConDetalle(GuardarSolicitudConDetallesDto solicitud)
         {
             if(solicitud.DetallesSolicitud.DetalleSolicitud.Count > 0)
             {

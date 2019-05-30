@@ -53,7 +53,12 @@ namespace Logica
             }
         }
 
-        public async Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudes()
+        public async Task<List<SolicitudDto>> ObtenerTodasSolicitudes()
+        {
+            return await _solicitudesAccesoBd.ObtenerTodasSolicitudes();
+        }
+
+        public async Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudesConDetalle()
         {
             return await _solicitudesAccesoBd.ObtenerTodasSolicitudesConDetalle();
         }

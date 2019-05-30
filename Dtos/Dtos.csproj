@@ -47,6 +47,7 @@
     <Compile Include="Facturas\FacturasDto.cs" />
     <Compile Include="Facturas\GuardarFacturaDto.cs" />
     <Compile Include="Facturas\ListadoDetallesFacturaDto.cs" />
+    <Compile Include="PrendasClasificacion\ClasificacionDto.cs" />
     <Compile Include="PrendasClasificacion\CostoDto.cs" />
     <Compile Include="PrendasClasificacion\PrendasDto.cs" />
     <Compile Include="PrendasClasificacion\PrendaClasificacionDto.cs" />

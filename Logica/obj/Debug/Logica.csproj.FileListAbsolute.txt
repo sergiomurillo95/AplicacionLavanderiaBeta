@@ -11,3 +11,17 @@ D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\Persistencia.dll.confi
 D:\Repositorios\AplicacionLavanderiaBeta\Logica\bin\Debug\EntityFramework.xml
 D:\Repositorios\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.dll
 D:\Repositorios\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.pdb
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\bin\Debug\Logica.dll
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\bin\Debug\Logica.pdb
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\bin\Debug\Dtos.dll
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\bin\Debug\Persistencia.dll
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\bin\Debug\EntityFramework.dll
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\bin\Debug\Dtos.pdb
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\bin\Debug\Persistencia.pdb
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\bin\Debug\Persistencia.dll.config
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\bin\Debug\EntityFramework.xml
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.dll
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Logica\obj\Debug\Logica.pdb

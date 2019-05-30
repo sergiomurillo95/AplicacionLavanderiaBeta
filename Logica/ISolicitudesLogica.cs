@@ -6,7 +6,8 @@ namespace Logica
 {
     public interface ISolicitudesLogica
     {
-        Task GuardarSolicitud(GuardarSolicitudConDetallesDto solicitud);
+        Task GuardarSolicitud(GuardarSolicitudDto solicitud);
+        Task GuardarSolicitudConDetalle(GuardarSolicitudConDetallesDto solicitud);
         Task GuardarDetalleSolicitud(GuardarDetalleSolicitudDto detalleSolicitud);
         Task CambiarEstadoSolicitud(SolicitudDto solicitud);
         Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudesConDetalle();

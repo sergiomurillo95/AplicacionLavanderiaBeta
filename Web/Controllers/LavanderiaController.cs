@@ -67,7 +67,6 @@ namespace Lavanderia.Controllers
         [HttpGet]
         public ActionResult DetalleSolicitud(int? id)
         {
-            ViewBag.SolicitudId = id;
 
             ViewData["id"] = id;
 
@@ -109,6 +108,7 @@ namespace Lavanderia.Controllers
 
         public ActionResult ListarDetalleSolicitudes(int? id)
         {
+            ViewData["id"] = id;
             var solicitudes = _solicitudLogica.ObtenerSolicitudConDetallePorId(id.Value).Result;
 
             return View(solicitudes);

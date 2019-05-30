@@ -58,7 +58,7 @@
 
 <h4>Listado de prendas solicitadas</h4>
 <p>
-    @Html.ActionLink("Registrar prendas", "DetalleSolicitud")
+    @Html.ActionLink("Registrar prendas", "DetalleSolicitud", new { @id = ViewData["id"] })
 </p>
 <table class="table">
     <tr> 

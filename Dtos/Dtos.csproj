@@ -54,6 +54,7 @@
     <Compile Include="Solicitud\EstadosSolicitudes.cs" />
     <Compile Include="Solicitud\GuardarSolicitudDto.cs" />
     <Compile Include="Solicitud\ListadoDetallesSolicitudDto.cs" />
+    <Compile Include="Solicitud\SolicitudConClienteDto.cs" />
     <Compile Include="Solicitud\SolicitudDto.cs" />
     <Compile Include="Solicitud\SolicitudesConDetallesDto.cs" />
   </ItemGroup>

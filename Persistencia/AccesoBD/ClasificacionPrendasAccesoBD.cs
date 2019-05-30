@@ -87,6 +87,38 @@ namespace Persistencia.AccesoBD
             return listaCostoDto;
         }
 
+        public async Task<List<PrendasDto>> ObtenerTodasPrendas()
+        {
+            var prendas = new List<PrendasDto>();
+            var listaPrendas = _context.Set<Prendas>().ToList();
+            foreach(var prenda in listaPrendas)
+            {
+                var prendaDto = new PrendasDto
+                {
+                     Id = prenda.Id,
+                     Nombre = prenda.Nombre
+                };
+                prendas.Add(prendaDto);
+            }
+            return await Task.FromResult(prendas);
+        }
+
+        public async Task<List<ClasificacionDto>> ObtenerTodasClasificacion()
+        {
+            var clasificaciones = new List<ClasificacionDto>();
+            var listaClasificacion = _context.Set<Clasificacion>().ToList();
+            foreach (var clasificacion in listaClasificacion)
+            {
+                var clasificacionDto = new ClasificacionDto
+                {
+                    Id = clasificacion.Id,
+                    Nombre = clasificacion.Nombre
+                };
+                clasificaciones.Add(clasificacionDto);
+            }
+            return await Task.FromResult(clasificaciones);
+        }
+
         public async Task<PrendasDto> ObtenerPrendaPorId(int id)
         {
             var prenda = (await EncontrarPrenda(t => t.Id == id)).FirstOrDefault();

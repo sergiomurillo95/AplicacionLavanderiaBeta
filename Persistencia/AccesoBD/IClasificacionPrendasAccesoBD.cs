@@ -10,6 +10,8 @@ namespace Persistencia.AccesoBD
 {
     public interface IClasificacionPrendasAccesoBD
     {
+        Task<List<PrendasDto>> ObtenerTodasPrendas();
+        Task<List<ClasificacionDto>> ObtenerTodasClasificacion();
         Task<List<PrendaClasificacionDto>> ObtenerTodasPrendasConClasificacion();
         Task<CostoDto> ObtenerCostoPorIdPrendaClasificacion(int idPrendaClasificacion);
         Task<List<CostoDto>> ObtenerTodosCostos();

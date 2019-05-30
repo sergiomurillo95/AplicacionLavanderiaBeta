@@ -41,24 +41,33 @@ namespace Lavanderia.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Crear([Bind(Include = "ClientesId, Nombres, Identificacion, Habitacion, SuplementoEntrega")] CrearSolicitudes crear)
+        public JsonResult ConsultarCliente(int? id)
         {
-            if (ModelState.IsValid)
-            {
+            var cliente = _clientesLogica.ObtenerClientePorId(id.Value).Result;
 
-                var solicitud = new Solicitudes();
-                solicitud.Fecha = DateTime.Now;
-                solicitud.Estado = "Solicitado";
-                solicitud.ClientesId = crear.ClientesId;
+            return Json(cliente);
 
-                db.SaveChanges();
+        }
+        /*
+                [HttpPost]
+                [ValidateAntiForgeryToken]
+                public ActionResult Crear([Bind(Include = "ClientesId, Nombres, Identificacion, Habitacion, SuplementoEntrega")] CrearSolicitudes crear)
+                {
+                    if (ModelState.IsValid)
+                    {
 
-                return RedirectToAction("Index");
+                        var solicitud = new Solicitudes();
+                        solicitud.Fecha = DateTime.Now;
+                        solicitud.Estado = "Solicitado";
+                        solicitud.ClientesId = crear.ClientesId;
 
-            }
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+        
+    }
 
             return View();
-        }
+        }*/
     }
 }

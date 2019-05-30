@@ -206,6 +206,8 @@
     <Content Include="Views\Lavanderia\Index.cshtml" />
     <Content Include="Views\Lavanderia\Crear.cshtml" />
     <Content Include="Views\Lavanderia\DetalleSolicitud.cshtml" />
+    <Content Include="Views\Lavanderia\ListarDetalleSolicitudes.cshtml" />
+    <Content Include="Views\Lavanderia\ListarDetalleSolicitudes1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

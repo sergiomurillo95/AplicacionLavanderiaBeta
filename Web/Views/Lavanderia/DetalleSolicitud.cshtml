@@ -3,11 +3,10 @@
 @{
     ViewBag.Title = "Crear detalle de la Solicitud";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.SolicitudesId = 0;
 
 }
 
-<h2>DetalleSolicitud</h2>
+<h2>Detalle de la Solicitud</h2>
 
 
 @using (Html.BeginForm())
@@ -15,7 +14,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>GuardarDetalleSolicitudDto</h4>
+        <h4>Guardar registro de prendas</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -87,40 +86,43 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-
-
-        $(document).on('change', '#ClasificacionId', function (event) {
-
-            $.ajax({
-                type: "POST",
-                url: "/Lavanderia/ConsultarPrendas",
-                data: {
-                    id: $(this).val()
-                }
-            }).success(function (data) {
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.ActionLink("Listado de solicitudes", "Index")
+        </div>
+        <div class="col-md-10">
+            @Html.ActionLink("Listado prendas", "ListarDetalleSolicitudes", new { @id = ViewData["id"] })
+        </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
 
 
-                $(PrendasId).html('');
+            $(document).on('change', '#ClasificacionId', function (event) {
 
-                $.each(data,
-                    function (index, type) {
-                        var content = '<option value="' + type.Id + '">' + type.Nombre + '</option>';
-                        $(PrendasId).append(content);
-                    });
+                $.ajax({
+                    type: "POST",
+                    url: "/Lavanderia/ConsultarPrendas",
+                    data: {
+                        id: $(this).val()
+                    }
+                }).success(function (data) {
+
+
+                    $(PrendasId).html('');
+
+                    $.each(data,
+                        function (index, type) {
+                            var content = '<option value="' + type.Id + '">' + type.Nombre + '</option>';
+                            $(PrendasId).append(content);
+                        });
+                });
             });
-        });
-    </script>
-}
+        </script>
+    }

@@ -1,0 +1,59 @@
+﻿@model Dtos.Solicitud.SolicitudesConDetallesDto
+
+@{
+    ViewBag.Title = "ListarDetalleSolicitudes1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListarDetalleSolicitudes1</h2>
+
+<div>
+    <h4>SolicitudConClienteDto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SuplementoEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuplementoEntrega)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

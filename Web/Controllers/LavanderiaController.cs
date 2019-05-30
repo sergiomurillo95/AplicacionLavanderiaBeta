@@ -69,6 +69,8 @@ namespace Lavanderia.Controllers
         {
             ViewBag.SolicitudId = id;
 
+            ViewData["id"] = id;
+
             //Aquí consultas los clientes
             var clasificacion = _clasificacionPrendasLogica.ObtenerTodasClasificacion().Result;
             var listaclasificacion = new SelectList(clasificacion, "ID", "Nombre", 0);
@@ -81,6 +83,21 @@ namespace Lavanderia.Controllers
 
             return View();
 
+        }
+
+
+        [HttpPost, ActionName("DetalleSolicitud")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CrearDetalleSolicitud(int id, [Bind(Include = "SolicitudesId, PrendasId, ClasificacionId, PrendasClasificacionId, LavadoSeco, LavadoPlanchado, Planchado, Doblado, CantidadPrendas")] GuardarDetalleSolicitudDto guardarDetalleSolicitudDto)
+        {
+            if (ModelState.IsValid)
+            {
+                guardarDetalleSolicitudDto.SolicitudesId = id;
+                _solicitudLogica.GuardarDetalleSolicitud(guardarDetalleSolicitudDto);
+                return RedirectToAction("DetalleSolicitud");
+            }
+
+            return View();
         }
 
         [HttpPost]

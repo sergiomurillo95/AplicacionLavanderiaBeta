@@ -10,7 +10,9 @@ namespace Persistencia.AccesoBD
 {
     public interface ISolicitudesAccesoBD
     {
-        Task GuardarSolicitudConDetalles(GuardarSolicitudDto solicitud);
+        Task GuardarSolicitud(GuardarSolicitudDto solicitud);
+        Task GuardarDetalleSolicitud(GuardarDetalleSolicitudDto detalleSolicitud);
+        Task GuardarSolicitudConDetalles(GuardarSolicitudConDetallesDto solicitud);
         Task<SolicitudesConDetallesDto> ObtenerSolicitudConDetallePorId(int id);
         Task<List<SolicitudConClienteDto>> ObtenerTodasSolicitudes();
         Task<SolicitudDto> ObtenerSolicitudPorId(int id);

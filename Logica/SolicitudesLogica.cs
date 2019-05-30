@@ -14,13 +14,23 @@ namespace Logica
             _solicitudesAccesoBd = solicitudesAccesoBd;
         }
 
+        public async Task GuardarSolicitud(GuardarSolicitudDto solicitud)
+        {
+           await _solicitudesAccesoBd.GuardarSolicitud(solicitud);
+        }
+
+        public async Task GuardarDetalleSolicitud(GuardarDetalleSolicitudDto detalleSolicitud)
+        {
+            await _solicitudesAccesoBd.GuardarDetalleSolicitud(detalleSolicitud);
+        }
+
         /// <summary>
         /// Condiciones de negocio:
         /// 1) La solicitud debe tener por lo menos un detalle para poder ser almacenada
         /// </summary>
         /// <param name="solicitud"></param>
         /// <returns></returns>
-        public async Task GuardarSolicitud(GuardarSolicitudDto solicitud)
+        public async Task GuardarSolicitud(GuardarSolicitudConDetallesDto solicitud)
         {
             if(solicitud.DetallesSolicitud.DetalleSolicitud.Count > 0)
             {

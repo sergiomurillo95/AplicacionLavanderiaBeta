@@ -1,0 +1,205 @@
+﻿@model Dtos.Facturas.FacturasConDetalleDto
+
+@{
+                /**/
+
+                ViewBag.Title = "ListarDetalleSolicitudes";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Factura de servicio</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Numero de Factura
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            Cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            Habitación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            Fecha
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            Estado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            Suplemento a entrega
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+
+    </dl>
+</div>
+
+<h4>Listado de prendas facturadas</h4>
+<table class="table">
+    <tr>
+        <th>
+            Prenda
+        </th>
+        <th>
+            Clasificación
+        </th>
+        <th>
+            Lavado seco
+        </th>
+        <th>
+            Lavado y planchado
+        </th>
+        <th>
+            Planchado
+        </th>
+        <th>
+            Doblado
+        </th>
+        <th>
+            Cantidad prendas
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Costo Lavado seco
+        </th>
+        <th>
+            Costo Lavado y planchado
+        </th>
+        <th>
+            Costo Planchado
+        </th>
+        <th>
+            Costo Doblado
+        </th>
+
+        <th>
+            Total
+        </th>
+
+        <th></th>
+    </tr>
+
+   
+
+    <tr>
+        <td>
+            Total Parcial
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td> 0
+            @Html.DisplayFor(model => model.TotalParcial)
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Doblado
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+            @Html.DisplayFor(model => model.Doblado)
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Suplemento entrega
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+            @Html.DisplayFor(model => model.Suplemento)
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Total Global
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+            @Html.DisplayFor(model => model.TotalGlobal)
+        </td>
+    </tr>
+
+</table>
+
+
+<p>
+    @Html.ActionLink("Listado de solicitudes", "Index")
+</p>

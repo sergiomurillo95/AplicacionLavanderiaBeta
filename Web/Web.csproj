@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\FacturacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\LavanderiaController.cs" />
@@ -209,11 +210,14 @@
     <Content Include="Views\Lavanderia\Crear.cshtml" />
     <Content Include="Views\Lavanderia\DetalleSolicitud.cshtml" />
     <Content Include="Views\Lavanderia\ListarDetalleSolicitudes.cshtml" />
-    <Content Include="Views\Lavanderia\ListarDetalleSolicitudes1.cshtml" />
     <Content Include="Views\Gestion\Index.cshtml" />
     <Content Include="Views\Gestion\ActualizarEstadoSolicitud.cshtml" />
     <Content Include="Views\Gestion\ListarDetalleSolicitudes.cshtml" />
     <Content Include="Views\Gestion\ActualizarEstadoDetalleSolicitud.cshtml" />
+    <Content Include="Views\Facturacion\Index.cshtml" />
+    <Content Include="Views\Facturacion\ListarDetalleSolicitudes.cshtml" />
+    <Content Include="Views\Facturacion\ConsultarFactura.cshtml" />
+    <Content Include="Views\Facturacion\GenerarFactura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,7 +3,7 @@
 namespace Dtos.Solicitud
 {
     public class DetalleSolicitudDto
-    {   [Key]
+    {   
         public int Id { get; set; }
         public int SolicitudesId { get; set; }
         public int PrendasClasificacionId { get; set; }

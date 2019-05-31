@@ -73,7 +73,7 @@ namespace Lavanderia.Controllers
                                           },
                                             "ID", "Name", 1);
             ViewData["Estados"] = list;
-            var prenda = _solicitudLogica.ObtenerDetalleSolicitudPorId(id.Value).Result;
+            var prenda = _solicitudLogica.ObtenerDetalleSolicitud(id.Value).Result;
 
             return View(prenda);
         }

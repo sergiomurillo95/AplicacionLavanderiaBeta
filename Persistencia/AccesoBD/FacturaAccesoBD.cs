@@ -98,6 +98,77 @@ namespace Persistencia.AccesoBD
             return default(FacturasConDetalleDto);
         }
 
+        public async Task<FacturasConDetalleDto> ObtenerFacturaConDetallesPorIdSolicitud(int idSolicitud)
+        {
+            var factura = (await EncontrarFactura(t => t.SolicitudesId == idSolicitud)).FirstOrDefault();
+            if (factura != default(Factura))
+            {
+                var listaDetallesFacturaDto = new List<ObtenerDetalleFacturaDto>();
+                var listaDetallesFactura = (await EncontrarDetallesFactura(t => t.FacturaId == factura.Id)).ToList();
+
+                var cliente = await _clientesAccesoBd.ObtenerClientePorId(factura.ClientesId);
+                var solicitud = await _solicitudesAccesoBd.ObtenerSolicitudPorId(factura.SolicitudesId);
+
+                foreach (var detalleFactura in listaDetallesFactura)
+                {
+                    var detalleSolicitud = await _solicitudesAccesoBd.ObtenerDetalleSolicitud(detalleFactura.DetalleSolicitudId);
+
+                    var prendaClasificacion = (await _clasificacionPrendasAccesoBd.EncontrarPrendasClasificacion(t => t.Id == detalleSolicitud.PrendasClasificacionId)).FirstOrDefault();
+
+                    var prenda = (await _clasificacionPrendasAccesoBd.EncontrarPrenda(t => t.Id == prendaClasificacion.PrendasId)).FirstOrDefault();
+                    var clasificacion = (await _clasificacionPrendasAccesoBd.EncontrarClasificacion(t => t.Id == prendaClasificacion.ClasificacionId)).FirstOrDefault();
+
+
+                    var detalleFacturaDto = new ObtenerDetalleFacturaDto
+                    {
+                        Id = detalleFactura.Id,
+
+                        Clasificacion = clasificacion.Nombre,
+                        Prenda = prenda.Nombre,
+
+                        CantidadPrendasDetalle = detalleSolicitud.CantidadPrendas,
+                        DobladoDetalle = detalleSolicitud.Doblado,
+                        EstadoDetalle = detalleSolicitud.Estado,
+                        LavadoPlanchadoDetalle = detalleSolicitud.LavadoPlanchado,
+                        LavadoSecoDetalle = detalleSolicitud.LavadoSeco,
+                        PlanchadoDetalle = detalleSolicitud.Planchado,
+
+                        Doblado = detalleFactura.Doblado,
+                        LavadoPlanchado = detalleFactura.LavadoPlanchado,
+                        LavadoSeco = detalleFactura.LavadoSeco,
+                        Planchado = detalleFactura.Planchado,
+                        Total = detalleFactura.Total
+                    };
+                    listaDetallesFacturaDto.Add(detalleFacturaDto);
+                }
+
+                var listadoDetallesFacturas = new ListadoObtenerDetallesFacturaDto
+                {
+                    DetallesFactura = listaDetallesFacturaDto
+                };
+
+                var facturaConDetalleDto = new FacturasConDetalleDto
+                {
+                    Id = factura.Id,
+                    Nombre = cliente.Nombres,
+                    Identificacion = cliente.Identificacion,
+                    Habitacion = cliente.Habitacion,
+
+                    SuplementoEntrega = solicitud.SuplementoEntrega,
+                    Fecha = solicitud.Fecha,
+
+                    Doblado = factura.Doblado,
+                    Estado = factura.Estado,
+                    Suplemento = factura.Suplemento,
+                    TotalGlobal = factura.TotalGlobal,
+                    TotalParcial = factura.TotalParcial,
+                    DetallesFacturas = listadoDetallesFacturas
+                };
+
+                return facturaConDetalleDto;
+            }
+            return default(FacturasConDetalleDto);
+        }
         public async Task<List<ObtenerFacturasDto>> ObtenerTodasFacturas()
         {
             var listaFacturas = _context.Set<Factura>().ToList();

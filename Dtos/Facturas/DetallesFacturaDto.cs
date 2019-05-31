@@ -1,6 +1,6 @@
 ﻿namespace Dtos.Facturas
 {
-    public class DetalleFacturaDto
+    public class DetallesFacturaDto
     {
         public int Id { get; set; }
         public int FacturaId { get; set; }

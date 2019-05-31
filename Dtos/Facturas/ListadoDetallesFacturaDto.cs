@@ -4,6 +4,6 @@ namespace Dtos.Facturas
 {
     public class ListadoDetallesFacturaDto
     {
-        public List<DetalleFacturaDto> DetallesFactura { get; set; } = new List<DetalleFacturaDto>();
+        public List<DetallesFacturaDto> DetallesFactura { get; set; } = new List<DetallesFacturaDto>();
     }
 }

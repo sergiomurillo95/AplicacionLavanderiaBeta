@@ -28,12 +28,10 @@ namespace Logica
         /// </summary>
         /// <param name="factura"></param>
         /// <returns></returns>
-        public async Task GuardarFactura(GuardarFacturaDto factura)
+        public async Task<int> GuardarFactura(GuardarFacturaDto factura)
         {
-            if(factura.DetallesFacturas.DetallesFactura.Count > 0)
-            {
-                await _facturaAccesoBd.GuardarFactura(factura);
-            } 
+           var facturaId = await _facturaAccesoBd.GuardarFactura(factura);
+            return facturaId;
         }
 
         /// <summary>
@@ -52,7 +50,7 @@ namespace Logica
                 double totalDoblado = 0;
                 double totalSuplemento = 0;
 
-                var listaDetallesFactura = new List<DetalleFacturaDto>();
+                var listaDetallesFactura = new List<DetallesFacturaDto>();
 
                 foreach (var detalleSolicitud in solicitud.ListadoDetallesSolicitud.DetalleSolicitud)
                 {
@@ -87,7 +85,7 @@ namespace Logica
 
                     totalGlobal = totalParcial;
 
-                    var detalleFactura = new DetalleFacturaDto
+                    var detalleFactura = new DetallesFacturaDto
                     {
                          DetalleSolicitudId = detalleSolicitud.Id,
                          Doblado = doblado,
@@ -113,7 +111,7 @@ namespace Logica
                 {
                      ClientesId = solicitud.ClienteId,
                      Doblado = totalDoblado,
-                     Estado = "Finalizado",
+                     Estado = "Facturado",
                      SolicitudesId = solicitud.Id,
                      TotalGlobal = totalGlobal,
                      TotalParcial = totalParcial,
@@ -137,7 +135,7 @@ namespace Logica
             return await _facturaAccesoBd.ObtenerTodasFacturasConDetalle();
         }
 
-        public async Task<FacturasDto> ObtenerFacturaPorId(int id)
+        public async Task<ObtenerFacturasDto> ObtenerFacturaPorId(int id)
         {
             return await _facturaAccesoBd.ObtenerFacturaPorId(id);
         }

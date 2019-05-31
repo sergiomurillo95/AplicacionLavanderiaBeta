@@ -42,9 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clientes\ClienteDto.cs" />
-    <Compile Include="Facturas\DetalleFacturaDto.cs" />
-    <Compile Include="Facturas\FacturasConDetalleDto.cs" />
+    <Compile Include="Facturas\DetallesFacturaDto.cs" />
     <Compile Include="Facturas\FacturasDto.cs" />
+    <Compile Include="Facturas\ListadoObtenerDetallesFacturaDto.cs" />
+    <Compile Include="Facturas\ObtenerDetalleFacturaDto.cs" />
+    <Compile Include="Facturas\FacturasConDetalleDto.cs" />
+    <Compile Include="Facturas\ObtenerFacturasDto.cs" />
     <Compile Include="Facturas\GuardarFacturaDto.cs" />
     <Compile Include="Facturas\ListadoDetallesFacturaDto.cs" />
     <Compile Include="PrendasClasificacion\ClasificacionDto.cs" />

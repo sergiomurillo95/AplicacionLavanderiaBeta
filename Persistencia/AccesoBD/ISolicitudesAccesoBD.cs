@@ -20,6 +20,7 @@ namespace Persistencia.AccesoBD
         Task<List<SolicitudesConDetallesDto>> ObtenerTodasSolicitudesConDetalle();
         Task<List<DetalleSolicitudDto>> ObtenerDetalleSolicitudPorId(int idSolicitud);
 
+        Task<DetalleSolicitudDto> ObtenerDetalleSolicitud(int id);
         Task<List<SolicitudesConDetallesDto>> ConsultarSolicitudConDetallePorEstado(string estado);
         Task ActualizarSolicitud(SolicitudDto solicitud);
         Task ActualizarDetalleSolicitud(DetalleSolicitudDto detalle);

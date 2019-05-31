@@ -2,7 +2,7 @@
 
 namespace Dtos.Facturas
 {
-    public class FacturasConDetalleDto
+    public class ObtenerFacturasDto
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -17,6 +17,5 @@ namespace Dtos.Facturas
         public double Suplemento { get; set; }
         public double TotalGlobal { get; set; }
         public string Estado { get; set; }
-        public ListadoObtenerDetallesFacturaDto DetallesFacturas { get; set; }
     }
 }

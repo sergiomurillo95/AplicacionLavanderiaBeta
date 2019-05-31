@@ -10,11 +10,11 @@ namespace Persistencia.AccesoBD
 {
     public interface IFacturaAccesoBD
     {
-        Task GuardarFactura(GuardarFacturaDto factura);
+        Task<int> GuardarFactura(GuardarFacturaDto factura)
         Task ActualizarFactura(FacturasDto factura);
         Task<List<FacturasConDetalleDto>> ObtenerTodasFacturasConDetalle();
-        Task<List<FacturasDto>> ObtenerTodasFacturas();
-        Task<FacturasDto> ObtenerFacturaPorId(int id);
+        Task<List<ObtenerFacturasDto>> ObtenerTodasFacturas();
+        Task<ObtenerFacturasDto> ObtenerFacturaPorId(int id);
         Task<FacturasConDetalleDto> ObtenerFacturaConDetallesPorId(int id);
         Task<IQueryable<Factura>> EncontrarFactura(Expression<Func<Factura, bool>> expresion);
         Task<IQueryable<DetalleFactura>> EncontrarDetallesFactura(Expression<Func<DetalleFactura, bool>> expresion);

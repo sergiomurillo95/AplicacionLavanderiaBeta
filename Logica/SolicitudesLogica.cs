@@ -68,6 +68,7 @@ namespace Logica
             var solicitudDto = await _solicitudesAccesoBd.ObtenerSolicitudPorId(id);
             if (solicitudDto != default(SolicitudDto))
             {
+                var detalleSolicitud = await _solicitudesAccesoBd.ObtenerDetalleSolicitudPorId(id);
                 var estadoAnt = solicitudDto.Estado;
                 var estadoNue = estado;
                 /*
@@ -78,6 +79,11 @@ namespace Logica
                 */
                 solicitudDto.Estado = estadoNue;
                 await _solicitudesAccesoBd.ActualizarSolicitud(solicitudDto);
+                foreach(var detalle in detalleSolicitud)
+                {
+                    detalle.Estado = estado;
+                    await _solicitudesAccesoBd.ActualizarDetalleSolicitud(detalle);
+                }
             }
         }
 

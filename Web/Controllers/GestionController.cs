@@ -30,6 +30,17 @@ namespace Lavanderia.Controllers
             return View(solicitudes);
         }
 
+
+        public ActionResult ActualizarEstadoSolicitud(int? id)
+        {
+            ViewData["id"] = id;
+            var solicitudes = _solicitudLogica.ObtenerSolicitudConDetallePorId(id.Value).Result;
+
+            return View(solicitudes);
+        }
+
+
+
         [HttpGet]
         public ActionResult Crear()
         {

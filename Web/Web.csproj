@@ -211,6 +211,8 @@
     <Content Include="Views\Lavanderia\ListarDetalleSolicitudes.cshtml" />
     <Content Include="Views\Lavanderia\ListarDetalleSolicitudes1.cshtml" />
     <Content Include="Views\Gestion\Index.cshtml" />
+    <Content Include="Views\Gestion\ActualizarEstadoSolicitud.cshtml" />
+    <Content Include="Views\Gestion\ListarDetalleSolicitudes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

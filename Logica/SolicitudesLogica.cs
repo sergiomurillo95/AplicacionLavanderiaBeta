@@ -132,5 +132,10 @@ namespace Logica
         {
             return await _solicitudesAccesoBd.ObtenerDetalleSolicitudPorId(idSolicitud);
         }
+
+        public async Task<DetalleSolicitudDto> ObtenerDetalleSolicitud(int id)
+        {
+            return await _solicitudesAccesoBd.ObtenerDetalleSolicitud(id);
+        }
     }
 }

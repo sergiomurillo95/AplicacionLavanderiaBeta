@@ -144,5 +144,10 @@ namespace Logica
         {
             return await _facturaAccesoBd.ObtenerFacturaConDetallesPorId(id);
         }
+
+        public async Task<FacturasConDetalleDto> ObtenerFacturaConDetallePorIdSolicitud(int idSolicitud)
+        {
+            return await _facturaAccesoBd.ObtenerFacturaConDetallesPorIdSolicitud(idSolicitud);
+        }
     }
 }

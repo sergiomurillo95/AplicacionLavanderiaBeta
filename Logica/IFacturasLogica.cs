@@ -12,5 +12,6 @@ namespace Logica
         Task<List<FacturasConDetalleDto>> ObtenerTodasFacturasConDetalle();
         Task<ObtenerFacturasDto> ObtenerFacturaPorId(int id);
         Task<FacturasConDetalleDto> ObtenerFacturaConDetallesPorId(int id);
+        Task<FacturasConDetalleDto> ObtenerFacturaConDetallePorIdSolicitud(int idSolicitud);
     }
 }

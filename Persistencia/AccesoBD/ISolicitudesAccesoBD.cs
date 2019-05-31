@@ -22,6 +22,7 @@ namespace Persistencia.AccesoBD
 
         Task<List<SolicitudesConDetallesDto>> ConsultarSolicitudConDetallePorEstado(string estado);
         Task ActualizarSolicitud(SolicitudDto solicitud);
+        Task ActualizarDetalleSolicitud(DetalleSolicitudDto detalle);
         Task EliminarSolicitud(int id);
         Task<IQueryable<Solicitudes>> EncontrarSolicitudes(Expression<Func<Solicitudes, bool>> expresion);
         Task<IQueryable<DetalleSolicitud>> EncontrarDetallesSolicitudes(Expression<Func<DetalleSolicitud, bool>> expresion);

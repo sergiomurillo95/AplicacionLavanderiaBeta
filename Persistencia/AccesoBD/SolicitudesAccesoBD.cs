@@ -328,6 +328,25 @@ namespace Persistencia.AccesoBD
             } 
         }
 
+        public async Task ActualizarDetalleSolicitud(DetalleSolicitudDto detalle)
+        {
+            var detalleEntidad = _context.Set<DetalleSolicitud>().First(a => a.Id == detalle.Id);
+            if (detalleEntidad != default(DetalleSolicitud))
+            {
+                detalleEntidad.Id = detalle.Id;
+                detalleEntidad.CantidadPrendas = detalle.CantidadPrendas;
+                detalleEntidad.Doblado = detalle.Doblado;
+                detalleEntidad.Estado = detalle.Estado;
+                detalleEntidad.LavadoPlanchado = detalle.LavadoPlanchado;
+                detalleEntidad.LavadoSeco = detalle.LavadoSeco;
+                detalleEntidad.Planchado = detalle.Planchado;
+                detalleEntidad.PrendasClasificacionId = detalle.PrendasClasificacionId;
+                detalleEntidad.SolicitudesId = detalle.SolicitudesId;
+
+                await _context.SaveChangesAsync();
+            }
+        }
+
         public async Task EliminarSolicitud(int id)
         {
             _context.Solicitudes.Remove(_context.Solicitudes.Single(a => a.Id == id));

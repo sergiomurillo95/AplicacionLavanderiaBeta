@@ -10,7 +10,7 @@ namespace Lavanderia.Controllers
 {
     public class FacturacionController : Controller
     {
-        
+
         private readonly ISolicitudesLogica _solicitudLogica;
         private readonly IClientesLogica _clientesLogica;
         private readonly IClasificacionPrendasLogica _clasificacionPrendasLogica;
@@ -28,29 +28,32 @@ namespace Lavanderia.Controllers
         public ActionResult Index()
         {
             var solicitudes = _solicitudLogica.ObtenerTodasSolicitudes().Result;
-            
+
             return View(solicitudes);
         }
 
 
-        public ActionResult GenerarFactura (int id)
+        public ActionResult GenerarFactura(int id)
         {
             ViewData["id"] = id;
             var estado = "Facturado";
             _solicitudLogica.CambiarEstadSolicitud(id, estado);
 
-            var factura = _facturasLogica.GenerarFacturaDesdeSolicitud(id);
-            var idFactura = factura.Id;
-            var facturaDetalle = _facturasLogica.ObtenerFacturaConDetallesPorId(idFactura).Result;
-            //return RedirectToAction("ConsultarFactura", new { id = factura.Id })
-            return View(facturaDetalle);
+            // Valida si existe una factura para esta solicitud
+            var IdFactura = _facturasLogica.ObtenerFacturaConDetallePorIdSolicitud(id).Result;
+            if (IdFactura ==null)
+            {
+                var factura = _facturasLogica.GenerarFacturaDesdeSolicitud(id);
+            }
+            return RedirectToAction("ConsultarFactura", new { id });
+            //return View(facturaDetalle);
         }
 
         public ActionResult ConsultarFactura(int id)
         {
             ViewData["id"] = id;
 
-            var factura = _facturasLogica.ObtenerFacturaConDetallesPorId(id).Result;
+            var factura = _facturasLogica.ObtenerFacturaConDetallePorIdSolicitud(id).Result;
 
             return View(factura);
         }

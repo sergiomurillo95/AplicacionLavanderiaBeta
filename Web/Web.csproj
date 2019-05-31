@@ -160,6 +160,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\LavanderiaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -209,6 +210,7 @@
     <Content Include="Views\Lavanderia\DetalleSolicitud.cshtml" />
     <Content Include="Views\Lavanderia\ListarDetalleSolicitudes.cshtml" />
     <Content Include="Views\Lavanderia\ListarDetalleSolicitudes1.cshtml" />
+    <Content Include="Views\Gestion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

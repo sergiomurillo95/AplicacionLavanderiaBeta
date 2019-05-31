@@ -46,9 +46,10 @@ namespace Persistencia.AccesoBD
                 LavadoPlanchado = detalleSolicitud.LavadoPlanchado,
                 LavadoSeco = detalleSolicitud.LavadoSeco,
                 Planchado = detalleSolicitud.Planchado,
-                Estado = detalleSolicitud.Estado,
+                Estado = "Pendiente",
                 CantidadPrendas = detalleSolicitud.CantidadPrendas,
                 PrendasClasificacionId = prendasClasificacion.Id
+                
             };
             _context.Set<DetalleSolicitud>().Add(detalleSolicitudEntidad);
             await _context.SaveChangesAsync();

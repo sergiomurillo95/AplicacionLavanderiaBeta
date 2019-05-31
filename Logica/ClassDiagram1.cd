@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Logica.ClasificacionPrendasLogica" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAUAAABAAAAIAAAAABAAAAAAAEgAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClasificacionPrendasLogica.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Logica.ClientesLogica" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAoAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClientesLogica.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Logica.FacturasLogica" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgQAgAAEAAAAAAgBAAAAAAgAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FacturasLogica.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Logica.SolicitudesLogica" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQQAAAQAIAEVAAAAAAAACggAAAAAAAAAAAAIA=</HashCode>
+      <FileName>SolicitudesLogica.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Logica.IClasificacionPrendasLogica">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAABAAAAIAAAAABAAAAAAAEgAAAAAAAAAAAAA=</HashCode>
+      <FileName>IClasificacionPrendasLogica.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Logica.IClientesLogica">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IClientesLogica.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Logica.IFacturasLogica">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAgBAAAAAAgAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IFacturasLogica.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Logica.ISolicitudesLogica">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQQAAAQAIAEVAAAAAAAACggAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISolicitudesLogica.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

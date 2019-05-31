@@ -8,14 +8,14 @@ using System.Web.Mvc;
 
 namespace Lavanderia.Controllers
 {
-    public class LavanderiaController : Controller
+    public class GestionController : Controller
     {
         
         private readonly ISolicitudesLogica _solicitudLogica;
         private readonly IClientesLogica _clientesLogica;
         private readonly IClasificacionPrendasLogica _clasificacionPrendasLogica;
 
-        public LavanderiaController(IClientesLogica clientesLogica,
+        public GestionController(IClientesLogica clientesLogica,
             ISolicitudesLogica solicitudLogica, IClasificacionPrendasLogica clasificacionPrendasLogica)
         {
             _clientesLogica = clientesLogica;
@@ -113,7 +113,5 @@ namespace Lavanderia.Controllers
 
             return View(solicitudes);
         }
-
-
     }
 }

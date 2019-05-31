@@ -11,10 +11,19 @@ namespace Persistencia.AccesoBD
     public class FacturaAccesoBD : IFacturaAccesoBD
     {
         private LavanderiaDbContext _context;
+        private ISolicitudesAccesoBD _solicitudesAccesoBd;
+        private IClasificacionPrendasAccesoBD _clasificacionPrendasAccesoBd;
+        private IClientesAccesoBD _clientesAccesoBd;
 
-        public FacturaAccesoBD(LavanderiaDbContext context)
+        public FacturaAccesoBD(LavanderiaDbContext context,
+            ISolicitudesAccesoBD solicitudesAccesoBd,
+            IClasificacionPrendasAccesoBD clasificacionPrendasAccesoBd,
+            IClientesAccesoBD clientesAccesoBd)
         {
             _context = context;
+            _solicitudesAccesoBd = solicitudesAccesoBd;
+            _clasificacionPrendasAccesoBd = clasificacionPrendasAccesoBd;
+            _clientesAccesoBd = clientesAccesoBd;
         }
 
         public async Task<FacturasConDetalleDto> ObtenerFacturaConDetallesPorId(int id)
@@ -22,16 +31,37 @@ namespace Persistencia.AccesoBD
             var factura = (await EncontrarFactura(t => t.Id == id)).FirstOrDefault();
             if (factura != default(Factura))
             {
-                var listaDetallesFacturaDto = new List<DetalleFacturaDto>();
+                var listaDetallesFacturaDto = new List<ObtenerDetalleFacturaDto>();
                 var listaDetallesFactura = (await EncontrarDetallesFactura(t => t.FacturaId == factura.Id)).ToList();
-                foreach(var detalleFactura in listaDetallesFactura)
+
+                var cliente = await _clientesAccesoBd.ObtenerClientePorId(factura.ClientesId);
+                var solicitud = await _solicitudesAccesoBd.ObtenerSolicitudPorId(factura.SolicitudesId);
+
+                foreach (var detalleFactura in listaDetallesFactura)
                 {
-                    var detalleFacturaDto = new DetalleFacturaDto
+                    var detalleSolicitud = await _solicitudesAccesoBd.ObtenerDetalleSolicitud(detalleFactura.DetalleSolicitudId);
+
+                    var prendaClasificacion = (await _clasificacionPrendasAccesoBd.EncontrarPrendasClasificacion(t => t.Id == detalleSolicitud.PrendasClasificacionId)).FirstOrDefault();
+
+                    var prenda = (await _clasificacionPrendasAccesoBd.EncontrarPrenda(t => t.Id == prendaClasificacion.PrendasId)).FirstOrDefault();
+                    var clasificacion = (await _clasificacionPrendasAccesoBd.EncontrarClasificacion(t => t.Id == prendaClasificacion.ClasificacionId)).FirstOrDefault();
+
+
+                    var detalleFacturaDto = new ObtenerDetalleFacturaDto
                     {
                          Id = detalleFactura.Id,
-                         DetalleSolicitudId = detalleFactura.DetalleSolicitudId,
+
+                         Clasificacion = clasificacion.Nombre,
+                         Prenda = prenda.Nombre,
+
+                         CantidadPrendasDetalle = detalleSolicitud.CantidadPrendas,
+                         DobladoDetalle = detalleSolicitud.Doblado,
+                         EstadoDetalle = detalleSolicitud.Estado,
+                         LavadoPlanchadoDetalle = detalleSolicitud.LavadoPlanchado,
+                         LavadoSecoDetalle = detalleSolicitud.LavadoSeco,
+                         PlanchadoDetalle = detalleSolicitud.Planchado,
+
                          Doblado = detalleFactura.Doblado,
-                         FacturaId = detalleFactura.FacturaId,
                          LavadoPlanchado = detalleFactura.LavadoPlanchado,
                          LavadoSeco = detalleFactura.LavadoSeco,
                          Planchado = detalleFactura.Planchado,
@@ -40,7 +70,7 @@ namespace Persistencia.AccesoBD
                     listaDetallesFacturaDto.Add(detalleFacturaDto);
                 }
 
-                var listadoDetallesFacturas = new ListadoDetallesFacturaDto
+                var listadoDetallesFacturas = new ListadoObtenerDetallesFacturaDto
                 {
                     DetallesFactura = listaDetallesFacturaDto
                 };
@@ -48,10 +78,15 @@ namespace Persistencia.AccesoBD
                 var facturaConDetalleDto = new FacturasConDetalleDto
                 {
                      Id = factura.Id,
-                     ClientesId = factura.ClientesId,
+                     Nombre = cliente.Nombres,
+                     Identificacion = cliente.Identificacion,
+                     Habitacion = cliente.Habitacion,
+
+                     SuplementoEntrega = solicitud.SuplementoEntrega,
+                     Fecha = solicitud.Fecha,
+
                      Doblado = factura.Doblado,
                      Estado = factura.Estado,
-                     SolicitudesId = factura.SolicitudesId,
                      Suplemento = factura.Suplemento,
                      TotalGlobal = factura.TotalGlobal,
                      TotalParcial = factura.TotalParcial,
@@ -63,19 +98,28 @@ namespace Persistencia.AccesoBD
             return default(FacturasConDetalleDto);
         }
 
-        public async Task<List<FacturasDto>> ObtenerTodasFacturas()
+        public async Task<List<ObtenerFacturasDto>> ObtenerTodasFacturas()
         {
             var listaFacturas = _context.Set<Factura>().ToList();
-            var listaFacturasDto = new List<FacturasDto>();
+            var listaFacturasDto = new List<ObtenerFacturasDto>();
             foreach (var factura in listaFacturas)
             {
-                var facturaDto = new FacturasDto
+                var cliente = await _clientesAccesoBd.ObtenerClientePorId(factura.ClientesId);
+                var solicitud = await _solicitudesAccesoBd.ObtenerSolicitudPorId(factura.SolicitudesId);
+
+                var facturaDto = new ObtenerFacturasDto
                 {
                     Id = factura.Id,
-                    ClientesId = factura.ClientesId,
+
+                    Nombre = cliente.Nombres,
+                    Habitacion = cliente.Habitacion,
+                    Identificacion = cliente.Identificacion,
+
+                    SuplementoEntrega = solicitud.SuplementoEntrega,
+                    Fecha = solicitud.Fecha,
+
                     Doblado = factura.Doblado,
                     Estado = factura.Estado,
-                    SolicitudesId = factura.SolicitudesId,
                     Suplemento = factura.Suplemento,
                     TotalGlobal = factura.TotalGlobal,
                     TotalParcial = factura.TotalParcial
@@ -94,25 +138,45 @@ namespace Persistencia.AccesoBD
             {
                 if (factura != default(Factura))
                 {
-                    var listaDetallesFacturaDto = new List<DetalleFacturaDto>();
+                    var listaDetallesFacturaDto = new List<ObtenerDetalleFacturaDto>();
                     var listaDetallesFactura = (await EncontrarDetallesFactura(t => t.FacturaId == factura.Id)).ToList();
+
+                    var cliente = await _clientesAccesoBd.ObtenerClientePorId(factura.ClientesId);
+                    var solicitud = await _solicitudesAccesoBd.ObtenerSolicitudPorId(factura.SolicitudesId);
+
                     foreach (var detalleFactura in listaDetallesFactura)
                     {
-                        var detalleFacturaDto = new DetalleFacturaDto
+                        var detalleSolicitud = await _solicitudesAccesoBd.ObtenerDetalleSolicitud(detalleFactura.DetalleSolicitudId);
+                        var prendaClasificacion = (await _clasificacionPrendasAccesoBd.EncontrarPrendasClasificacion(t => t.Id == detalleSolicitud.PrendasClasificacionId)).FirstOrDefault();
+
+                        var prenda = (await _clasificacionPrendasAccesoBd.EncontrarPrenda(t => t.Id == prendaClasificacion.PrendasId)).FirstOrDefault();
+                        var clasificacion = (await _clasificacionPrendasAccesoBd.EncontrarClasificacion(t => t.Id == prendaClasificacion.ClasificacionId)).FirstOrDefault();
+
+                        var detalleFacturaDto = new ObtenerDetalleFacturaDto
                         {
                             Id = detalleFactura.Id,
-                            DetalleSolicitudId = detalleFactura.DetalleSolicitudId,
+
+                            Clasificacion = clasificacion.Nombre,
+                            Prenda = prenda.Nombre,
+
+                            CantidadPrendasDetalle = detalleSolicitud.CantidadPrendas,
+                            DobladoDetalle = detalleSolicitud.Doblado,
+                            EstadoDetalle = detalleSolicitud.Estado,
+                            LavadoPlanchadoDetalle = detalleSolicitud.LavadoPlanchado,
+                            LavadoSecoDetalle = detalleSolicitud.LavadoSeco,
+                            PlanchadoDetalle = detalleSolicitud.Planchado,
+
                             Doblado = detalleFactura.Doblado,
-                            FacturaId = detalleFactura.FacturaId,
                             LavadoPlanchado = detalleFactura.LavadoPlanchado,
                             LavadoSeco = detalleFactura.LavadoSeco,
                             Planchado = detalleFactura.Planchado,
                             Total = detalleFactura.Total
                         };
+
                         listaDetallesFacturaDto.Add(detalleFacturaDto);
                     }
 
-                    var listadoDetallesFacturas = new ListadoDetallesFacturaDto
+                    var listadoDetallesFacturas = new ListadoObtenerDetallesFacturaDto
                     {
                         DetallesFactura = listaDetallesFacturaDto
                     };
@@ -120,10 +184,15 @@ namespace Persistencia.AccesoBD
                     var facturaConDetalleDto = new FacturasConDetalleDto
                     {
                         Id = factura.Id,
-                        ClientesId = factura.ClientesId,
+                        Nombre = cliente.Nombres,
+                        Identificacion = cliente.Identificacion,
+                        Habitacion = cliente.Habitacion,
+
+                        SuplementoEntrega = solicitud.SuplementoEntrega,
+                        Fecha = solicitud.Fecha,
+
                         Doblado = factura.Doblado,
                         Estado = factura.Estado,
-                        SolicitudesId = factura.SolicitudesId,
                         Suplemento = factura.Suplemento,
                         TotalGlobal = factura.TotalGlobal,
                         TotalParcial = factura.TotalParcial,
@@ -135,28 +204,37 @@ namespace Persistencia.AccesoBD
             return listaFactuasConDetalle;
         }
 
-        public async Task<FacturasDto> ObtenerFacturaPorId(int id)
+        public async Task<ObtenerFacturasDto> ObtenerFacturaPorId(int id)
         {
             var factura = (await EncontrarFactura(t => t.Id == id)).FirstOrDefault();
             if(factura != default(Factura))
             {
-                var facturaDto = new FacturasDto
+                var cliente = await _clientesAccesoBd.ObtenerClientePorId(factura.ClientesId);
+                var solicitud = await _solicitudesAccesoBd.ObtenerSolicitudPorId(factura.SolicitudesId);
+
+                var facturaDto = new ObtenerFacturasDto
                 {
-                     Id = factura.Id,
-                     ClientesId = factura.ClientesId,
-                     Doblado = factura.Doblado,
-                     Estado = factura.Estado,
-                     SolicitudesId = factura.SolicitudesId,
-                     Suplemento = factura.Suplemento,
-                     TotalGlobal = factura.TotalGlobal,
-                     TotalParcial = factura.TotalParcial
+                    Id = factura.Id,
+
+                    Nombre = cliente.Nombres,
+                    Habitacion = cliente.Habitacion,
+                    Identificacion = cliente.Identificacion,
+
+                    SuplementoEntrega = solicitud.SuplementoEntrega,
+                    Fecha = solicitud.Fecha,
+
+                    Doblado = factura.Doblado,
+                    Estado = factura.Estado,
+                    Suplemento = factura.Suplemento,
+                    TotalGlobal = factura.TotalGlobal,
+                    TotalParcial = factura.TotalParcial
                 };
                 return facturaDto;
             }
-            return default(FacturasDto);
+            return default(ObtenerFacturasDto);
         }
 
-        public async Task GuardarFactura(GuardarFacturaDto factura)
+        public async Task<int> GuardarFactura(GuardarFacturaDto factura)
         {
             var facturaEntidad = new Factura
             {
@@ -188,7 +266,7 @@ namespace Persistencia.AccesoBD
                 _context.Set<DetalleFactura>().Add(detalleFacturaEntidad);
                 await _context.SaveChangesAsync();
             }
-            
+            return facturaEntidad.Id;
         }
 
         public async Task ActualizarFactura(FacturasDto factura)

@@ -28,7 +28,7 @@ namespace Persistencia.AccesoBD
             var solicitudEntidad = new Solicitudes
             {
                 ClienteId = solicitud.ClientesId,
-                Estado = "Solicitado",
+                Estado = EstadosSolicitudes.SolicitudSolicitada,
                 Fecha = DateTime.Now,
                 SuplementoEntrega = solicitud.SuplementoEntrega
             };
@@ -46,7 +46,7 @@ namespace Persistencia.AccesoBD
                 LavadoPlanchado = detalleSolicitud.LavadoPlanchado,
                 LavadoSeco = detalleSolicitud.LavadoSeco,
                 Planchado = detalleSolicitud.Planchado,
-                Estado = "Pendiente",
+                Estado = EstadosSolicitudes.SolicitudSolicitada,
                 CantidadPrendas = detalleSolicitud.CantidadPrendas,
                 PrendasClasificacionId = prendasClasificacion.Id
                 

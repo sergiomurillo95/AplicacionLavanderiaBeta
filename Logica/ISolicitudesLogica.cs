@@ -21,5 +21,6 @@ namespace Logica
         Task<List<SolicitudesConDetallesDto>> ConsultarSolicitudConDetallePorEstado(string estado);
         Task<SolicitudDto> ObtenerSolicitudPorId(int id);
         Task ActualizarSolicitud(SolicitudDto solicitud);
+        Task<DetalleSolicitudDto> ObtenerDetalleSolicitud(int id);
     }
 }

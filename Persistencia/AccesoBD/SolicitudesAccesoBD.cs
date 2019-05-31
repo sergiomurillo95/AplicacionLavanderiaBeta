@@ -109,6 +109,36 @@ namespace Persistencia.AccesoBD
             return await Task.FromResult(listaSolicitudesDto);
         }
 
+        public async Task<DetalleSolicitudDto> ObtenerDetalleSolicitud(int id)
+        {
+            var detalle = (await EncontrarDetallesSolicitudes(t => t.Id == id)).FirstOrDefault();
+            if(detalle != default(DetalleSolicitud))
+            {
+                var prendaClasificacion = (await _clasificacionPrendasAccesoBd.EncontrarPrendasClasificacion(t => t.Id == detalle.PrendasClasificacionId)).FirstOrDefault();
+
+                var prenda = (await _clasificacionPrendasAccesoBd.EncontrarPrenda(t => t.Id == prendaClasificacion.PrendasId)).FirstOrDefault();
+                var clasificacion = (await _clasificacionPrendasAccesoBd.EncontrarClasificacion(t => t.Id == prendaClasificacion.ClasificacionId)).FirstOrDefault();
+
+                var detalleDto = new DetalleSolicitudDto
+                {
+                    Id = detalle.Id,
+                    Estado = detalle.Estado,
+                    Doblado = detalle.Doblado,
+                    LavadoPlanchado = detalle.LavadoPlanchado,
+                    LavadoSeco = detalle.LavadoSeco,
+                    Planchado = detalle.Planchado,
+                    CantidadPrendas = detalle.CantidadPrendas,
+                    PrendasClasificacionId = detalle.PrendasClasificacionId,
+                    SolicitudesId = detalle.SolicitudesId,
+                    Clasificacion = clasificacion.Nombre,
+                    Prenda = prenda.Nombre
+                };
+
+                return detalleDto;
+            }
+            return default(DetalleSolicitudDto);
+        }
+
         public async Task<List<DetalleSolicitudDto>> ObtenerDetalleSolicitudPorId(int idSolicitud)
         {
             var listaDetallesSolicitudesDto = new List<DetalleSolicitudDto>();

@@ -63,6 +63,17 @@ namespace Logica
             }
         }
 
+        public async Task CambiarEstadoDetalleSolicitud(int id, string estado)
+        {
+            var detalleSolicitudDto = await _solicitudesAccesoBd.ObtenerDetalleSolicitud(id);
+            if (detalleSolicitudDto != default(DetalleSolicitudDto))
+            {
+                detalleSolicitudDto.Estado = estado;
+                await _solicitudesAccesoBd.ActualizarDetalleSolicitud(detalleSolicitudDto);
+            }
+
+        }
+
         public async Task CambiarEstadSolicitud(int id, string estado)
         {
             var solicitudDto = await _solicitudesAccesoBd.ObtenerSolicitudPorId(id);

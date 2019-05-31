@@ -57,7 +57,7 @@ namespace Lavanderia.Controllers
                 var estado = solicitudEstado.Estado;
                  solicitudEstado.Id = id;
                 _solicitudLogica.CambiarEstadSolicitud(id, estado);
-                return RedirectToAction("ActualizarEstadoSolicitud");
+                return RedirectToAction("ActualizarEstadoSolicitud", new {id});
             }
 
             return View();
@@ -86,7 +86,7 @@ namespace Lavanderia.Controllers
             {
                 solicitudEstado.Id = id;
                 _solicitudLogica.CambiarEstadoSolicitud(solicitudEstado);
-                return RedirectToAction("ActualizarEstadoSolicitud");
+                return RedirectToAction("Index");
             }
 
             return View();

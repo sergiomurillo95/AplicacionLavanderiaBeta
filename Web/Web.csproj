@@ -213,6 +213,7 @@
     <Content Include="Views\Gestion\Index.cshtml" />
     <Content Include="Views\Gestion\ActualizarEstadoSolicitud.cshtml" />
     <Content Include="Views\Gestion\ListarDetalleSolicitudes.cshtml" />
+    <Content Include="Views\Gestion\ActualizarEstadoDetalleSolicitud.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

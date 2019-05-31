@@ -34,10 +34,64 @@ namespace Lavanderia.Controllers
         public ActionResult ActualizarEstadoSolicitud(int? id)
         {
             ViewData["id"] = id;
+            var list = new SelectList(new[]
+                                          {
+                                           
+                                              new{ID="En proceso",Name="En proceso"},
+                                              new{ID="Finalizado",Name="Finalizado"},
+                                          },
+                            "ID", "Name", 1);
+            ViewData["list"] = list;
+            ViewData["Estados"] = list;
             var solicitudes = _solicitudLogica.ObtenerSolicitudConDetallePorId(id.Value).Result;
 
             return View(solicitudes);
         }
+
+        [HttpPost, ActionName("ActualizarEstadoSolicitud")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ActualizarEstado(int id, [Bind(Include = "Estado")] SolicitudDto solicitudEstado)
+        {
+            if (ModelState.IsValid)
+            {
+                var estado = solicitudEstado.Estado;
+                 solicitudEstado.Id = id;
+                _solicitudLogica.CambiarEstadSolicitud(id, estado);
+                return RedirectToAction("ActualizarEstadoSolicitud");
+            }
+
+            return View();
+        }
+        // Se actuliza los estado del detalle de la solicitud
+        public ActionResult ActualizarEstadoDetalleSolicitud(int? id)
+        {
+            ViewData["id"] = id;
+            var list = new SelectList(new[]
+                                          {
+                                        new{ID="En proceso",Name="En proceso"},
+                                        new{ID="Finalizado",Name="Finalizado"},
+                                          },
+                                            "ID", "Name", 1);
+            ViewData["Estados"] = list;
+            var prenda = _solicitudLogica.ObtenerDetalleSolicitudPorId(id.Value).Result;
+
+            return View(prenda);
+        }
+
+        [HttpPost, ActionName("ActualizarEstadoDetalleSolicitud")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ActualizarEstadoDetalle(int id, [Bind(Include = "Estado")] SolicitudDto solicitudEstado)
+        {
+            if (ModelState.IsValid)
+            {
+                solicitudEstado.Id = id;
+                _solicitudLogica.CambiarEstadoSolicitud(solicitudEstado);
+                return RedirectToAction("ActualizarEstadoSolicitud");
+            }
+
+            return View();
+        }
+
 
 
 

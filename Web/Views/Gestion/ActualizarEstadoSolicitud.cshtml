@@ -47,7 +47,7 @@
         @Html.LabelFor(model => model.SuplementoEntrega, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <div class="checkbox">
-                @Html.EditorFor(model => model.SuplementoEntrega, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.EditorFor(model => model.SuplementoEntrega, new { htmlAttributes = new { @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.SuplementoEntrega, "", new { @class = "text-danger", @readonly = "readonly" })
             </div>
         </div>
@@ -55,10 +55,21 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <select  class="form-group"  id="Estado" name="Estado">
-                <option value="En proceso">En proceso</option>
-                <option value="Finalizado">Finalizado</option>
-            </select>
+            @Html.DisplayFor(model => model.Estado)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Estado, ViewData["Estados"] as SelectList, "Por Favor seleccione un estado", new
+
+        {
+            @class = "form-control"
+
+        }
+
+                            )
+            @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -127,7 +138,7 @@
                         @Html.DisplayFor(modelItem => item.Estado)
                     </td>
                     <td>
-                        @Html.ActionLink("Editar estado", "Edit", new { id = item.Id }) 
+                        @Html.ActionLink("Editar estado", "ActualizarEstadoDetalleSolicitud", new { id = item.Id }) 
                         
                     </td>
                 </tr>
@@ -137,5 +148,5 @@
         }
 
         <div>
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Listado de solicitudes", "Index")
         </div>

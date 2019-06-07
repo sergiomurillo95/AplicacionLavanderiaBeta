@@ -49,6 +49,7 @@ namespace Persistencia.AccesoBD
                 Estado = EstadosSolicitudes.SolicitudSolicitada,
                 CantidadPrendas = detalleSolicitud.CantidadPrendas,
                 PrendasClasificacionId = prendasClasificacion.Id
+                
             };
             _context.Set<DetalleSolicitud>().Add(detalleSolicitudEntidad);
             await _context.SaveChangesAsync();

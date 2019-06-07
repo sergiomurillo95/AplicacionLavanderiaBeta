@@ -1,0 +1,128 @@
+﻿@model Dtos.Solicitud.GuardarDetalleSolicitudDto
+
+@{
+    ViewBag.Title = "Crear detalle de la Solicitud";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Detalle de la Solicitud</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Guardar registro de prendas</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClasificacionId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ClasificacionId, ViewData["Clasificacion"] as SelectList, "Por favor seleccione una clasificacion", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ClasificacionId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PrendasId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.PrendasId, ViewData["prendas"] as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PrendasId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LavadoSeco, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.LavadoSeco)
+                    @Html.ValidationMessageFor(model => model.LavadoSeco, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LavadoPlanchado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.LavadoPlanchado)
+                    @Html.ValidationMessageFor(model => model.LavadoPlanchado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Planchado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Planchado)
+                    @Html.ValidationMessageFor(model => model.Planchado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Doblado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Doblado)
+                    @Html.ValidationMessageFor(model => model.Doblado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CantidadPrendas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CantidadPrendas, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CantidadPrendas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.ActionLink("Listado de solicitudes", "Index")
+        </div>
+        <div class="col-md-10">
+            @Html.ActionLink("Listado prendas", "ListarDetalleSolicitudes", new { @id = ViewData["id"] })
+        </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+
+
+            $(document).on('change', '#ClasificacionId', function (event) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Lavanderia/ConsultarPrendas",
+                    data: {
+                        id: $(this).val()
+                    }
+                }).success(function (data) {
+
+
+                    $(PrendasId).html('');
+
+                    $.each(data,
+                        function (index, type) {
+                            var content = '<option value="' + type.Id + '">' + type.Nombre + '</option>';
+                            $(PrendasId).append(content);
+                        });
+                });
+            });
+        </script>
+    }

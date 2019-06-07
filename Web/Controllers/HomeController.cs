@@ -55,7 +55,7 @@ namespace Lavanderia.Controllers
                  DetallesSolicitud = listadoDetallesSolicitud
             };
 
-            _solicitudLogica.GuardarSolicitud(guardarSolicitud);
+            _solicitudLogica.GuardarSolicitudConDetalle(guardarSolicitud);
 
             var cliente = _clientesLogica.ObtenerTodosClientes().Result;
             ViewBag.Message = "Your application description page." + cliente.Count;

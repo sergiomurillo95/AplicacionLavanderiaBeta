@@ -1,7 +1,9 @@
-﻿namespace Dtos.Solicitud
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Dtos.Solicitud
 {
     public class GuardarDetalleSolicitudDto
-    {
+    {  
         public int Id { get; set; }
 
         public int SolicitudesId { get; set; }

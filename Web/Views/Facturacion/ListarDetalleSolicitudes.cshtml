@@ -1,0 +1,125 @@
+﻿@model Dtos.Solicitud.SolicitudesConDetallesDto
+
+@{
+    ViewBag.Title = "ListarDetalleSolicitudes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listado detalles de la solicitud</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Cliente
+        </dt>
+
+        <dd>
+            Habitación
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <dt>
+            Habitación
+        </dt>
+
+        <dd>
+            Habitación
+            @Html.DisplayFor(model => model.Habitacion)
+        </dd>
+
+        <dt>
+            Fecha
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            Estado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            Suplemento a entrega
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuplementoEntrega)
+        </dd>
+
+    </dl>
+</div>
+
+<h4>Listado de prendas solicitadas</h4>
+<table class="table">
+    <tr> 
+        <th>
+            Prenda
+        </th>
+        <th>
+            Clasificación
+        </th>
+        <th>
+            Lavado seco
+        </th>
+        <th>
+            Lavado y planchado
+        </th>
+        <th>
+            Planchado
+        </th>
+        <th>
+            Doblado
+        </th>
+        <th>
+            Cantidad prendas
+        </th>
+        <th>
+            Estado
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.ListadoDetallesSolicitud.DetalleSolicitud)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clasificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LavadoSeco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LavadoPlanchado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Planchado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doblado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadPrendas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+           
+        </tr>
+    }
+
+</table>
+
+
+<p>
+    @Html.ActionLink("Listado de solicitudes", "Index")
+</p>

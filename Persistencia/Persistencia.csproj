@@ -65,15 +65,24 @@
     <Compile Include="Entidades\PrendasClasificacion.cs" />
     <Compile Include="Entidades\Solicitudes.cs" />
     <Compile Include="LavanderiaDbContext.cs" />
-    <Compile Include="Migrations\201905291820270_Initial.cs" />
-    <Compile Include="Migrations\201905291820270_Initial.Designer.cs">
-      <DependentUpon>201905291820270_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201905300345257_Inicial.cs" />
+    <Compile Include="Migrations\201905300345257_Inicial.Designer.cs">
+      <DependentUpon>201905300345257_Inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905300452223_Modificacion en los modelos.cs" />
+    <Compile Include="Migrations\201905300452223_Modificacion en los modelos.Designer.cs">
+      <DependentUpon>201905300452223_Modificacion en los modelos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905300455245_Se elimina las tablas que se crearon .cs" />
+    <Compile Include="Migrations\201905300455245_Se elimina las tablas que se crearon .Designer.cs">
+      <DependentUpon>201905300455245_Se elimina las tablas que se crearon .cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -83,8 +92,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905291820270_Initial.resx">
-      <DependentUpon>201905291820270_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905300345257_Inicial.resx">
+      <DependentUpon>201905300345257_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905300452223_Modificacion en los modelos.resx">
+      <DependentUpon>201905300452223_Modificacion en los modelos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905300455245_Se elimina las tablas que se crearon .resx">
+      <DependentUpon>201905300455245_Se elimina las tablas que se crearon .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

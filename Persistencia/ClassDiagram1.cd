@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Persistencia.AccesoBD.ClasificacionPrendasAccesoBD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEABABABBAIAAQAARAAAgAAAEgAACAAAAAAAAAA=</HashCode>
+      <FileName>AccesoBD\ClasificacionPrendasAccesoBD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Persistencia.AccesoBD.ClientesAccesoBD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQBgAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccesoBD\ClientesAccesoBD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Persistencia.AccesoBD.FacturaAccesoBD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAQAAAgAAAABAAABgBAAAAAAgAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccesoBD\FacturaAccesoBD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Persistencia.AccesoBD.SolicitudesAccesoBD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAARAQUAAQRAAAEVAEAAAAAACggAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccesoBD\SolicitudesAccesoBD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Persistencia.Entidades.Clasificacion" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entidades\Clasificacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.Entidades.Clientes" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entidades\Clientes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.Entidades.Costo" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAAAAgAAAEAABAAAAAAAAAAAIAAEAAAA=</HashCode>
+      <FileName>Entidades\Costo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.Entidades.DetalleFactura" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAABAAAAAAAAAgAAAAAAAAAAAQAAIAAgIAAEAAAA=</HashCode>
+      <FileName>Entidades\DetalleFactura.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.Entidades.DetalleSolicitud" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAABAAAIAAAAAgAAAEAABAAAACAAAAAAIAAEAAAg=</HashCode>
+      <FileName>Entidades\DetalleSolicitud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.Entidades.Factura" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAJAAAAAgACAAAAAAAAACAAAAgBAAAAAAAg=</HashCode>
+      <FileName>Entidades\Factura.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.Entidades.Prendas" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entidades\Prendas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.Entidades.PrendasClasificacion" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAIBAAAgAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entidades\PrendasClasificacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.Entidades.Solicitudes" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAABAAAAEAABAAAAAAAAAAAAAAAABAAAAAAAg=</HashCode>
+      <FileName>Entidades\Solicitudes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.LavanderiaDbContext" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAIIACAAgAAAEACAEAAAAAAAAAhAAAAAAAA=</HashCode>
+      <FileName>LavanderiaDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.Migrations.Inicial" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201905300345257_Inicial.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Persistencia.Migrations.Modificacionenlosmodelos" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201905300452223_Modificacion en los modelos.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Persistencia.Migrations.Seeliminalastablasquesecrearon" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201905300455245_Se elimina las tablas que se crearon .cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Persistencia.Migrations.Configuration" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Migrations\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Persistencia.AccesoBD.IClasificacionPrendasAccesoBD" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEABABAAAAIAAQAARAAAgAAAEgAACAAAAAAAAAA=</HashCode>
+      <FileName>AccesoBD\IClasificacionPrendasAccesoBD.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Persistencia.AccesoBD.IClientesAccesoBD" Collapsed="true">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccesoBD\IClientesAccesoBD.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Persistencia.AccesoBD.IFacturaAccesoBD" Collapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAQAAAgAAAAAAAABgBAAAAAAgAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccesoBD\IFacturaAccesoBD.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Persistencia.AccesoBD.ISolicitudesAccesoBD" Collapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAQUAAAQAAAEVAEAAAAAACggAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccesoBD\ISolicitudesAccesoBD.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

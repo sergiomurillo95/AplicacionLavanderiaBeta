@@ -3,3 +3,9 @@ D:\Repositorios\AplicacionLavanderiaBeta\Dtos\bin\Debug\Dtos.pdb
 D:\Repositorios\AplicacionLavanderiaBeta\Dtos\obj\Debug\Dtos.csproj.CoreCompileInputs.cache
 D:\Repositorios\AplicacionLavanderiaBeta\Dtos\obj\Debug\Dtos.dll
 D:\Repositorios\AplicacionLavanderiaBeta\Dtos\obj\Debug\Dtos.pdb
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Dtos\bin\Debug\Dtos.dll
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Dtos\bin\Debug\Dtos.pdb
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Dtos\obj\Debug\Dtos.csprojResolveAssemblyReference.cache
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Dtos\obj\Debug\Dtos.csproj.CoreCompileInputs.cache
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Dtos\obj\Debug\Dtos.dll
+C:\Users\leandroagudelo\source\repos\v3\AplicacionLavanderiaBeta\Dtos\obj\Debug\Dtos.pdb

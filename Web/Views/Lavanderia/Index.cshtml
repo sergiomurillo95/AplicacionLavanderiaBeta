@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Dtos.Solicitud.SolicitudConClienteDto>
+
+@{
+    ViewBag.Title = "Solicitudes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Solicitudes servicios de lavanderia</h2>
+
+<p>
+    @Html.ActionLink("Crear solicitud", "Crear")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Habitacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SuplementoEntrega)
+        </th>
+        <th>
+           Acciones
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Habitacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SuplementoEntrega)
+        </td>
+        <td>
+            @Html.ActionLink("Registrar prendas", "DetalleSolicitud", new { id = item.Id }) |
+            @Html.ActionLink("Listado prendas", "ListarDetalleSolicitudes", new { id = item.Id })
+           
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,152 @@
+﻿@model Dtos.Solicitud.SolicitudesConDetallesDto
+
+@{
+                /**/
+
+                ViewBag.Title = "Actualizar Solicitud";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Actualizar Estado de la Solicitud</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>SolicitudConClienteDto</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Habitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Habitacion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.Habitacion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SuplementoEntrega, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.SuplementoEntrega, new { htmlAttributes = new { @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.SuplementoEntrega, "", new { @class = "text-danger", @readonly = "readonly" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Estado)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Estado, ViewData["Estados"] as SelectList, "Por Favor seleccione un estado", new
+
+        {
+            @class = "form-control"
+
+        }
+
+                            )
+            @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Actualizar" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+        <h4>Listado de prendas solicitadas</h4>
+        <table class="table">
+            <tr>
+                <th>
+                    Prenda
+                </th>
+                <th>
+                    Clasificación
+                </th>
+                <th>
+                    Lavado seco
+                </th>
+                <th>
+                    Lavado y planchado
+                </th>
+                <th>
+                    Planchado
+                </th>
+                <th>
+                    Doblado
+                </th>
+                <th>
+                    Cantidad prendas
+                </th>
+                <th>
+                    Estado
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.ListadoDetallesSolicitud.DetalleSolicitud)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prenda)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Clasificacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LavadoSeco)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LavadoPlanchado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Planchado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Doblado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CantidadPrendas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar estado", "ActualizarEstadoDetalleSolicitud", new { id = item.Id }) 
+                        
+                    </td>
+                </tr>
+            }
+
+        </table>
+        }
+
+        <div>
+            @Html.ActionLink("Listado de solicitudes", "Index")
+        </div>

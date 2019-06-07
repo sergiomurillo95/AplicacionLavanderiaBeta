@@ -1,9 +1,10 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Dtos.Solicitud
 {
     public class SolicitudConClienteDto
-    {
+    { 
         public int Id { get; set; }
         public string Nombres { get; set; }
         public string Habitacion { get; set; }
